@@ -1,0 +1,21 @@
+#login-form {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    left: 40%;
+}
+
+#login-form-container {
+    display: flex;
+  position: relative;
+  bottom: 20px;
+  width: 170px;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
