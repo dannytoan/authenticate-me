@@ -1,0 +1,7 @@
+#signup-form {
+    display: flex;
+    width: 100px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
