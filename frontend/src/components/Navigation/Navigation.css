@@ -23,7 +23,7 @@
 }
 
 .signup-btn {
-    margin-right: 25px;
+    margin-right: 20px;
 }
 
 #home-btn {
@@ -33,4 +33,8 @@
 
 #login-btn {
     margin-right: 5px;
+}
+
+#profile-btn {
+    margin-right: 15px;
 }

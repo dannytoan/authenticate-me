@@ -18,6 +18,7 @@ export default function Navigation({ isLoaded }) {
         <NavLink to="/signup" className="auth-btn signup-btn btn">
           <button>Sign Up</button>
         </NavLink>
+        <ProfileButton user={sessionUser} />
       </div>
     );
   }
