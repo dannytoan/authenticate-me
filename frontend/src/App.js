@@ -5,6 +5,8 @@ import SignUpFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
+import Photos from "./components/Photos"
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,6 +23,9 @@ function App() {
           <Switch>
             <Route path="/signup">
               <SignUpFormPage />
+            </Route>
+            <Route path="/photos">
+              <Photos />
             </Route>
           </Switch>
         )}
