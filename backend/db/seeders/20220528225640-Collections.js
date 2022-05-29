@@ -9,7 +9,10 @@ module.exports = {
       Example:
       */
    return queryInterface.bulkInsert('Collections', [{
+     userId: 1,
      title: 'My Moodboard Fall 2022',
+     createdAt: new Date(),
+     updatedAt: new Date(),
    }], {});
   },
 
