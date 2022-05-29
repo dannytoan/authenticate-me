@@ -10,4 +10,8 @@ router.get("/", asyncHandler(async function(req, res) {
     return res.json(photos);
 }))
 
+router.post("/", asyncHandler(async function(req, res) {
+
+}))
+
 module.exports = router;
