@@ -13,10 +13,13 @@ export default function Navigation({ isLoaded }) {
     sessionLinks = <ProfileButton user={sessionUser} />;
   } else {
     sessionLinks = (
-      <>
+      <div>
         <LoginFormModal />
-        <NavLink to="/signup" className="auth-btn signup-btn">Sign Up</NavLink>
-      </>
+        <NavLink to="/signup" className="auth-btn signup-btn btn">
+          <button>Sign Up</button>
+        </NavLink>
+        <ProfileButton user={sessionUser} />
+      </div>
     );
   }
 
