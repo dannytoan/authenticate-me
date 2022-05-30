@@ -9,12 +9,14 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    min-width: 965px;
     height: 30px;
     padding-top: 10px;
 }
 
 .nav-bg {
     background-color: rgba(0,0,0,.25);
+    min-width: 965px;
 }
 
 .auth-btn {

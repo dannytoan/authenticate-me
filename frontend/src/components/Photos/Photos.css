@@ -1,5 +1,6 @@
 #body {
     display: flex;
+    justify-content: space-evenly;
 }
 
 #img-container {
@@ -8,11 +9,14 @@
     flex-direction: row;
     list-style-type: none;
     width: 100%;
+    max-width: 1600px;
+    min-width: 965px;
     margin: 0px 20px;
 }
 
 .photo {
     width: 100%;
+    max-width: 266px;
     height: 25em;
     cursor: pointer;
 }
