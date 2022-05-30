@@ -35,6 +35,9 @@ function App() {
             <Route path="/photos/new">
               <CreateALook />
             </Route>
+            <Route>
+              Page Not Found
+            </Route>
           </Switch>
         )}
       </>

@@ -14,29 +14,32 @@ export default function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <div>
-        <a className="auth-btn" href="/photos">
-          Looks
-        </a>
-        <a href="/photos/new">
-          <button className="auth-btn">Add a Look</button>
-        </a>
         <LoginFormModal />
         <NavLink to="/signup" className="auth-btn signup-btn btn">
-          <button>Sign Up</button>
+          <button class="auth-btn">Sign Up</button>
         </NavLink>
-        <ProfileButton user={sessionUser} />
+        {/* <ProfileButton user={sessionUser} /> */}
       </div>
     );
   }
 
   return (
     <div>
+      <div id="masthead">
+        <div id="logo">DESIGNR.</div>
+      </div>
+      <div id="masthead-buttons">{isLoaded && sessionLinks}</div>
       <ul className="nav-bg">
         <li id="auth-buttons">
           <NavLink id="home-btn" exact to="/">
-            Home
+            <button className="auth-btn">Home</button>
           </NavLink>
-          {isLoaded && sessionLinks}
+          <a href="/photos">
+            <button className="auth-btn">Looks</button>
+          </a>
+          <a href="/photos/new">
+            <button className="auth-btn">Add a Look</button>
+          </a>
         </li>
       </ul>
     </div>

@@ -1,8 +1,10 @@
+import "./Splash.css"
+
 function Splash() {
 
     return (
         <div>
-            hi
+            <div>hi</div>
         </div>
     )
 }
