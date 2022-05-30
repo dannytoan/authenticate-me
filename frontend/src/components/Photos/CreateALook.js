@@ -12,6 +12,8 @@ const CreateALook = () => {
   //   const collection = useSelector(state => state.photo)
   //   console.log("COLLECTION", collection)
   const sessionUser = useSelector(state => state.session.user);
+    console.log(sessionUser, "SESSION USER")
+
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -23,13 +25,12 @@ const CreateALook = () => {
 
     const payload = {
       userId: sessionUser.id,
-      collectionId,
+    //   collectionId,
       imageUrl,
       description,
     };
 
     let createdLook = dispatch(createLook(payload));
-    console.log("CREATED LOOK", createdLook);
 
     if (createdLook) {
       history.push(`/photos/`);
@@ -39,7 +40,7 @@ const CreateALook = () => {
   return (
     <div>
       <div id="form-container">
-        <form id="form" onSubmit={handleSubmit}>
+        <form id="form" onSubmit={e => handleSubmit(e)}>
           <label>Image URL: </label>
           <input
             type="text"
@@ -58,12 +59,12 @@ const CreateALook = () => {
             onChange={(e) => setDescription(e.target.value)}
             className="input"
           />
-          <label>Collection: </label>
+          {/* <label>Collection: </label>
           <select
             className="input select"
             value={collectionId}
             onChange={(e) => setCollectionId(e.target.value)}
-          ></select>
+          ></select> */}
           <button className="submit">Submit</button>
         </form>
         <img src={photo.imageUrl}></img>

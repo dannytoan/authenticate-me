@@ -28,17 +28,21 @@ export const getPhotos = () => async (dispatch) => {
 };
 
 export const createLook = (payload) => async (dispatch) => {
-  const res = await csrfFetch(`/api/photos`, {
+  console.log("HIT CREATE LOOK THUNK!!!!!!!!!!!!!!!")
+
+  const res = await csrfFetch(`/api/photos/new`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
 
   const look = await res.json();
+  console.log("LOOK IN THUNK", payload)
 
   if (look) {
     dispatch(addOneLook(look));
   }
+
+  return look;
 };
 
 // REDUCER
