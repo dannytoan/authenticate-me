@@ -1,9 +1,36 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createLook } from "../../store/photos"
+import { useHistory } from "react-router-dom";
 import "./CreateALook.css"
 
 const CreateALook = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [collectionId, setCollectionId] = useState("");
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const photo = useSelector((state) => Object.values(state.photos))
+
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      const payload = {
+        collectionId,
+        imageUrl,
+        description
+      }
+
+      let createdLook = dispatch(createLook(payload));
+
+      console.log(createdLook)
+      if (createdLook) {
+        history.push(`/photos/${createdLook.id}`);
+      }
+  }
 
   return (
     <div>
@@ -35,6 +62,7 @@ const CreateALook = () => {
           <button className="submit">Submit</button>
 
         </form>
+        <img src={photo.imageUrl}></img>
       </div>
     </div>
   );
