@@ -14,6 +14,12 @@ export default function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <div>
+        <a className="auth-btn" href="/photos">
+          Looks
+        </a>
+        <a href="/photos/new">
+          <button className="auth-btn">Add a Look</button>
+        </a>
         <LoginFormModal />
         <NavLink to="/signup" className="auth-btn signup-btn btn">
           <button>Sign Up</button>
@@ -24,7 +30,7 @@ export default function Navigation({ isLoaded }) {
   }
 
   return (
-    <div >
+    <div>
       <ul className="nav-bg">
         <li id="auth-buttons">
           <NavLink id="home-btn" exact to="/">

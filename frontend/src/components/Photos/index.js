@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { getPhotos } from "../../store/photos";
 import { useSelector, useDispatch } from "react-redux";
+import "./Photos.css"
 
 
 export default function Photos() {
@@ -17,11 +18,15 @@ export default function Photos() {
     }, [dispatch])
 
     return (
-        <div>
-            Helloo
-            {photos.map(photo => (
-                <img src={photo.imageUrl}></img>
-            ))}
-        </div>
-    )
-}
+      <div id="body">
+        <ul id="img-container">
+          {photos.map((photo) => (
+            <li key={photo.id} className="li">
+              <img className="photo" src={photo.imageUrl}></img>
+              <div className="photo-description">{photo.description}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }

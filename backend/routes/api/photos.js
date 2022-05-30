@@ -10,4 +10,9 @@ router.get("/", asyncHandler(async function(req, res) {
     return res.json(photos);
 }))
 
+router.post("/", asyncHandler(async function(req, res) {
+  const photo = await db.Photo.create(req.body);
+  res.json(photo);
+}))
+
 module.exports = router;

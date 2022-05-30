@@ -1,0 +1,31 @@
+#form-container {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#form {
+    display: flex;
+    height: 300px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.input {
+    margin: 10px 0px 15px;
+    width: 500px;
+    height: 30px;
+}
+
+.submit {
+    margin-top: 20px;
+    height: 35px;
+}
+
+.select {
+    width: 508px;
+}
