@@ -11,7 +11,7 @@ router.get("/", asyncHandler(async function(req, res) {
 }))
 
 router.post("/", asyncHandler(async function(req, res) {
-  const photo = await Photo.create(req.body);
+  const photo = await db.Photo.create(req.body);
   res.json(photo);
 }))
 
