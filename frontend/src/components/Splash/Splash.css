@@ -11,5 +11,5 @@
 }
 
 #mid-header-photo {
-    z-index: 10;
+    z-index: -10;
 }
