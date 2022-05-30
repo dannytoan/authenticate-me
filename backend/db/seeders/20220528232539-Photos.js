@@ -47,6 +47,42 @@ module.exports = {
           createdAt: new Date(),
           updatedAt: new Date(),
         },
+        {
+          userId: 1,
+          collectionId: 1,
+          imageUrl:
+          "https://wwd.com/wp-content/uploads/2022/01/ZuhairMurad-couture-SS22-DM-023.jpg?w=800",
+          description: "Zuhair Murad Couture Spring 2022",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          collectionId: 1,
+          imageUrl:
+          "https://wwd.com/wp-content/uploads/2022/01/valentino-hc22-gg-40.jpg?w=800",
+          description: "Valentino Couture Spring 2022",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          collectionId: 1,
+          imageUrl:
+          "https://wwd.com/wp-content/uploads/2022/01/Elie-Saab-CS22-DM-04.jpg?w=800",
+          description: "Elie Saab Couture Spring 2022",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          collectionId: 1,
+          imageUrl:
+          "https://wwd.com/wp-content/uploads/2022/03/3.Paradis-RTW-F22-CTSY-27.jpg?w=800",
+          description: "Paradis RTW Fall 2022",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
       ],
       {}
     );
