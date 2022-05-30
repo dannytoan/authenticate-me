@@ -6,17 +6,20 @@
 
 #auth-buttons {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    min-width: 965px;
-    height: 30px;
-    padding-top: 10px;
+  flex-direction: row;
+  width: 100%;
+  min-width: 965px;
+  height: 30px;
+  padding: 10px;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .nav-bg {
-    background-color: rgba(0,0,0,.25);
     min-width: 965px;
+    width: 100%;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
 }
 
 .auth-btn {
@@ -35,8 +38,42 @@
 
 #login-btn {
     margin-right: 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 #profile-btn {
     margin-right: 15px;
+}
+
+#masthead {
+    height: 125px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    font-size: 50px;
+    margin-top: 25px;
+}
+
+
+#masthead-buttons {
+    position: relative;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.auth-btn {
+border: none;
+background-color: transparent;
+font-size: 15px;
+cursor: pointer;
 }

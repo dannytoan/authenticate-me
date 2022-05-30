@@ -5,8 +5,9 @@ import SignUpFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
-import Photos from "./components/Photos"
+import Photos from "./components/Photos";
 import CreateALook from "./components/Photos/CreateALook";
+import Splash from "./components/Splash";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ function App() {
         <Navigation isLoaded={isLoaded} />
         {isLoaded && (
           <Switch>
+            <Route exact path="/">
+              <Splash />
+            </Route>
             <Route path="/signup">
               <SignUpFormPage />
             </Route>
@@ -30,6 +34,9 @@ function App() {
             </Route>
             <Route path="/photos/new">
               <CreateALook />
+            </Route>
+            <Route>
+              Page Not Found
             </Route>
           </Switch>
         )}
