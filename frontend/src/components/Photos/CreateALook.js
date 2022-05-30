@@ -6,9 +6,11 @@ import "./CreateALook.css"
 
 const CreateALook = () => {
   const [imageUrl, setImageUrl] = useState("");
-  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [collectionId, setCollectionId] = useState("");
+
+//   const collection = useSelector(state => state.photo)
+//   console.log("COLLECTION", collection)
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -25,17 +27,18 @@ const CreateALook = () => {
       }
 
       let createdLook = dispatch(createLook(payload));
+      console.log("CREATED LOOK", createdLook)
 
       console.log(createdLook)
       if (createdLook) {
-        history.push(`/photos/${createdLook.id}`);
+        history.push(`/photos/`);
       }
   }
 
   return (
     <div>
       <div id="form-container">
-        <form id="form">
+        <form id="form" onSubmit={handleSubmit}>
           <label>Image URL: </label>
           <input
             type="text"
@@ -50,14 +53,16 @@ const CreateALook = () => {
             type="text"
             placeholder="Insert title here..."
             required
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             className="input"
             />
           <label>Collection: </label>
-          <select className="input select">
-            hey lol
-            <option className="input select">hey</option>
+          <select
+          className="input select"
+          value={collectionId}
+          onChange={(e) => setCollectionId(e.target.value)}
+          >
           </select>
           <button className="submit">Submit</button>
 
