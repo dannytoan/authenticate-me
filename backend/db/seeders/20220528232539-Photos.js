@@ -78,8 +78,26 @@ module.exports = {
           userId: 1,
           collectionId: 1,
           imageUrl:
-          "https://wwd.com/wp-content/uploads/2022/03/3.Paradis-RTW-F22-CTSY-27.jpg?w=800",
-          description: "Paradis RTW Fall 2022",
+          "https://wwd.com/wp-content/uploads/2022/01/Ambush-Prefall22-014.jpg?w=800",
+          description: "Ambush Prefall 2022",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          collectionId: 1,
+          imageUrl:
+          "https://wwd.com/wp-content/uploads/2021/09/Kaushik_Velendra_rtw_ss_2022_13.jpg?w=800",
+          description: "Kaushik Velendra RTW Spring 2022",
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          userId: 1,
+          collectionId: 1,
+          imageUrl:
+          "https://wwd.com/wp-content/uploads/2021/09/decaffine-S22-001.jpg?w=800",
+          description: "De Caffeine Homme Men's Spring 2022",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
