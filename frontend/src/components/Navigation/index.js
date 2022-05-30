@@ -34,6 +34,9 @@ export default function Navigation({ isLoaded }) {
           <NavLink id="home-btn" exact to="/">
             <button className="auth-btn">Home</button>
           </NavLink>
+          <a id="linkedin-btn" href="https://www.linkedin.com/in/dannytoan/" target="_blank">
+            <button className="auth-btn">LinkedIn</button>
+          </a>
           <a id="github-btn" href="https://github.com/dannytoan/designr-react-solo-project" target="_blank">
             <button className="auth-btn">Github</button>
           </a>
