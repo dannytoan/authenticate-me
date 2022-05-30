@@ -17,7 +17,9 @@ export default function Navigation({ isLoaded }) {
         <a className="auth-btn" href="/photos">
           Looks
         </a>
-        <button className="auth-btn">Add a Look</button>
+        <a href="/photos/new">
+          <button className="auth-btn">Add a Look</button>
+        </a>
         <LoginFormModal />
         <NavLink to="/signup" className="auth-btn signup-btn btn">
           <button>Sign Up</button>

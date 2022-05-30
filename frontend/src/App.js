@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
 import Photos from "./components/Photos"
+import CreateALook from "./components/Photos/CreateALook";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,8 +25,11 @@ function App() {
             <Route path="/signup">
               <SignUpFormPage />
             </Route>
-            <Route path="/photos">
+            <Route exact path="/photos">
               <Photos />
+            </Route>
+            <Route path="/photos/new">
+              <CreateALook />
             </Route>
           </Switch>
         )}
