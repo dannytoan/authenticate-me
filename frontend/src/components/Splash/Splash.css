@@ -1,0 +1,15 @@
+#splash-body {
+    height: 1400px;
+    width: 100%;
+}
+
+#mid-header-container {
+    margin: 1px 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#mid-header-photo {
+    z-index: 10;
+}
