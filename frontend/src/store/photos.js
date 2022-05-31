@@ -45,6 +45,20 @@ export const createLook = (payload) => async (dispatch) => {
   return look;
 };
 
+export const getPhotoDetail = (id) => async (dispatch) => {
+
+  const res = await csrfFetch(`/api/photos/${id}`)
+
+  const look = await res.json();
+  console.log(look, "LOOK INSIDE THUNK")
+
+  if (look) {
+    dispatch(addOneLook(look))
+  }
+
+  return look
+}
+
 // REDUCER
 const photosReducer = (state = {}, action) => {
   switch (action.type) {
