@@ -2,15 +2,16 @@ import { useEffect } from 'react';
 import { getPhotos } from "../../store/photos";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
-
 import { getPhotoDetail } from '../../store/photos';
+
+import "./PhotoDetail.css"
 
 const PhotoDetail = () => {
 
     const dispatch = useDispatch();
     const params = useParams();
     const { id } = params;
-    // console.log(params, "PARAMS")
+
     const photo = Object.values(useSelector(state => state.photos));
     const selectPhoto = photo.filter(photo => {return photo.id === +id})[0]
 
@@ -32,8 +33,10 @@ const PhotoDetail = () => {
 
     return (
         <div>
-            hiiiiiiiiiiiiiiii this is photo detail!!!!
-            <img src={selectPhoto?.imageUrl}></img>
+            <div id="photo-detail-container">
+            <h1 id="photo-title">{selectPhoto?.description}</h1>
+            <img id="selected-photo" src={selectPhoto?.imageUrl}></img>
+            </div>
         </div>
     )
 }
