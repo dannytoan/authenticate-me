@@ -9,7 +9,6 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       collectionId: {
-        allowNull: true,
         references: {model: "Collections"},
         type: Sequelize.INTEGER
       },

@@ -28,12 +28,12 @@ export const getPhotos = () => async (dispatch) => {
 };
 
 export const createLook = (payload) => async (dispatch) => {
-  console.log("HIT CREATE LOOK THUNK!!!!!!!!!!!!!!!")
 
   const res = await csrfFetch(`/api/photos/new`, {
     method: "POST",
     body: JSON.stringify(payload),
   });
+  console.log("HIT CREATE LOOK THUNK!!!!!!!!!!!!!!!")
 
   const look = await res.json();
   console.log("LOOK IN THUNK", payload)
