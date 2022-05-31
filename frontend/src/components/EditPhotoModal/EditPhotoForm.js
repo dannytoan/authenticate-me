@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import { editPhotoDetail } from "../../store/photos";
+import { useParams, useHistory } from "react-router-dom";
 import "./EditPhoto.css";
 
 function EditPhotoForm() {
@@ -8,6 +10,9 @@ function EditPhotoForm() {
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [errors, setErrors] = useState([]);
+
+    const { id } = useParams();
+    const history = useHistory();
 
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
@@ -22,6 +27,22 @@ function EditPhotoForm() {
 
 const handleSubmit = (e) => {
     e.preventDefault();
+
+    const payload = {
+        description,
+        imageUrl
+    };
+
+    let updatedPhoto = dispatch(editPhotoDetail(id, payload));
+
+    dispatch(editPhotoDetail(payload)).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+
+    if (updatedPhoto) {
+        history.push(`/photos/${id}`)
+    }
 }
 
   return (
@@ -46,6 +67,7 @@ const handleSubmit = (e) => {
         onChange={(e) => setImageUrl(e.target.value)}
         placeholder="Enter a new image URL"
         className="edit-photo-input"
+        required
         />
         <button id="edit-photo-submit" type="submit">Submit Changes</button>
       </form>

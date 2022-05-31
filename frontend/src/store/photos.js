@@ -59,6 +59,22 @@ export const getPhotoDetail = (id) => async (dispatch) => {
   return look
 }
 
+export const editPhotoDetail = (id, payload) => async (dispatch) => {
+  const res = await csrfFetch(`/api/photos/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+
+  const look = await res.json();
+
+  if (look) {
+    dispatch(addOneLook(look))
+  }
+
+  return look;
+}
+
 // REDUCER
 const photosReducer = (state = {}, action) => {
   switch (action.type) {
