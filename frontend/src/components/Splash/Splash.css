@@ -1,3 +1,7 @@
+#root {
+    min-height: fit-content;
+}
+
 #splash-body {
     height: 850px;
     width: 100%;
@@ -10,6 +14,9 @@
     align-content: center;
     flex-direction: column;
     align-items: center;
+    min-width: 1080px;
+    width: 100%;
+
 }
 
 #mid-header-photo {
@@ -20,6 +27,7 @@
     opacity: 1;
     transition: .4s .2s;
     width: 100%;
+    min-width: 1080px;
     z-index: -1;
 }
 
@@ -33,6 +41,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: -1;
 }
 
 #video-text-title {

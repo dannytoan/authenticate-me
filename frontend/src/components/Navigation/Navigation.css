@@ -8,7 +8,7 @@
     display: flex;
   flex-direction: row;
   width: 100%;
-  min-width: 965px;
+  min-width: 1080px;
   height: 30px;
   padding: 10px;
   justify-content: space-evenly;
@@ -20,6 +20,7 @@
     width: 100%;
     border-top: 1px black solid;
     border-bottom: 1px black solid;
+    min-width: 1080px;
 }
 
 .auth-btn {
@@ -51,6 +52,7 @@
 #masthead {
     height: 125px;
     width: 100%;
+    min-width: 1080px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -80,4 +82,9 @@ border: none;
 background-color: transparent;
 font-size: 15px;
 cursor: pointer;
+}
+
+#signout-button {
+    display: flex;
+
 }

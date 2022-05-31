@@ -24,6 +24,7 @@
 .submit {
     margin-top: 20px;
     height: 35px;
+    cursor: pointer;
 }
 
 .select {

@@ -9,7 +9,7 @@ function Splash() {
             id="mid-header-photo"
             src="https://images.lifestyleasia.com/wp-content/uploads/sites/6/2020/10/06075646/balmain-header-Cropped.jpg"
           /> */}
-          <video className="mid-header-video" autoPlay playsinline muted loop>
+          <video className="mid-header-video" autoPlay playsInline muted loop>
             <source
               type="video/mp4"
               src="https://res.cloudinary.com/www-eliesaab-com/video/upload/c_scale,h_1200,q_auto:good/v1644226949/HC_SS22_Banner_video_1_z56lug.mp4"
