@@ -1,32 +1,31 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { getPhotos } from "../../store/photos";
 import { useSelector, useDispatch } from "react-redux";
-import "./Photos.css"
-
+import "./Photos.css";
 
 export default function Photos() {
+  const photos = useSelector((state) => {
+    return Object.values(state.photos);
+  });
 
-    const photos = useSelector(state => {
-        return Object.values(state.photos)
-    });
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getPhotos());
+  }, [dispatch]);
 
-
-    useEffect(() => {
-        dispatch(getPhotos())
-    }, [dispatch])
-
-    return (
-      <div id="body">
-        <ul id="img-container">
-          {photos.map((photo) => (
-            <li key={photo.id} className="li">
+  return (
+    <div id="body">
+      <ul id="img-container">
+        {photos.map((photo) => (
+          <li key={photo.id} className="li">
+            <a href={`/photos/${photo.id}`}>
               <img className="photo" src={photo.imageUrl}></img>
-              <div className="photo-description">{photo.description}</div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
+            </a>
+            <div className="photo-description">{photo.description}</div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
