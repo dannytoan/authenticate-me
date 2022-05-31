@@ -21,22 +21,19 @@ function App() {
     isLoaded && (
       <>
         <Navigation isLoaded={isLoaded} />
+            <Route path="/signup">
+              <SignUpFormPage />
+            </Route>
         {isLoaded && (
           <Switch>
             <Route exact path="/">
               <Splash />
-            </Route>
-            <Route path="/signup">
-              <SignUpFormPage />
             </Route>
             <Route exact path="/photos">
               <Photos />
             </Route>
             <Route path="/photos/new">
               <CreateALook />
-            </Route>
-            <Route>
-              Page Not Found
             </Route>
           </Switch>
         )}
