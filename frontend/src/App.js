@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Photos from "./components/Photos";
 import CreateALook from "./components/Photos/CreateALook";
 import Splash from "./components/Splash";
+import PhotoDetail from "./components/Photos/PhotoDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
             </Route>
             <Route exact path="/photos">
               <Photos />
+            </Route>
+            <Route path="/photos/:id">
+              <PhotoDetail />
             </Route>
             <Route path="/photos/new">
               <CreateALook />
