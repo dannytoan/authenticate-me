@@ -33,10 +33,10 @@ export const createLook = (payload) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify(payload),
   });
-  console.log("HIT CREATE LOOK THUNK!!!!!!!!!!!!!!!")
+  // console.log("HIT CREATE LOOK THUNK!!!!!!!!!!!!!!!")
 
   const look = await res.json();
-  console.log("LOOK IN THUNK", payload)
+  // console.log("LOOK IN THUNK", payload)
 
   if (look) {
     dispatch(addOneLook(look));
@@ -50,13 +50,29 @@ export const getPhotoDetail = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/photos/${id}`)
 
   const look = await res.json();
-  console.log(look, "LOOK INSIDE THUNK")
+  // console.log(look, "LOOK INSIDE THUNK")
 
   if (look) {
     dispatch(addOneLook(look))
   }
 
   return look
+}
+
+export const editPhotoDetail = (id, payload) => async (dispatch) => {
+  const res = await csrfFetch(`/api/photos/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+
+  const look = await res.json();
+
+  if (look) {
+    dispatch(addOneLook(look))
+  }
+
+  return look;
 }
 
 // REDUCER
