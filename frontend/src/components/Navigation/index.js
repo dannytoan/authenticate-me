@@ -26,7 +26,7 @@ export default function Navigation({ isLoaded }) {
   return (
     <div>
       <div id="masthead">
-        <div id="logo">DESIGNR.</div>
+        <a href="/" id="logo">DESIGNR</a>
       </div>
       <div id="masthead-buttons">{isLoaded && sessionLinks}</div>
       <ul className="nav-bg">

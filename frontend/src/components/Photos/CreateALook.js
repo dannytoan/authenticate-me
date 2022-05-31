@@ -7,7 +7,7 @@ import "./CreateALook.css";
 const CreateALook = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
-  const [collectionId, setCollectionId] = useState("");
+  const [collectionId, setCollectionId] = useState(null);
 
   //   const collection = useSelector(state => state.photo)
   //   console.log("COLLECTION", collection)
@@ -20,12 +20,13 @@ const CreateALook = () => {
 
   const photo = useSelector((state) => Object.values(state.photos));
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
       userId: sessionUser.id,
-    //   collectionId,
+      collectionId,
       imageUrl,
       description,
     };
@@ -36,6 +37,7 @@ const CreateALook = () => {
       history.push(`/photos/`);
     }
   };
+
 
   return (
     <div>
