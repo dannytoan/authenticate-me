@@ -40,7 +40,7 @@ const CreateALook = () => {
       if (data && data.errors) setErrors(data.errors);
     });
 
-    if (errors.length < 0 && createLook) {
+    if (errors.length < 0 && createdLook) {
       history.push(`/photos/`);
       setErrorMessages({});
     }
