@@ -33,11 +33,11 @@ function App() {
             <Route exact path="/photos">
               <Photos />
             </Route>
-            <Route path="/photos/:id">
-              <PhotoDetail />
-            </Route>
-            <Route path="/photos/new">
+            <Route exact path="/photos/new">
               <CreateALook />
+            </Route>
+            <Route exact path="/photos/:id">
+              <PhotoDetail />
             </Route>
           </Switch>
         )}
