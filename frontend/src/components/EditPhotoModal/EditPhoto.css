@@ -1,0 +1,44 @@
+#edit-photo-modal-body {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#edit-photo-form {
+    display: flex;
+    height: 250px;
+    width: 500px;
+    flex-direction: column;
+    top: 30px;
+}
+
+.edit-photo-input {
+    margin: 10px 0 28px;
+    height: 35px;
+    padding-left: 10px;
+}
+
+#edit-photo-submit {
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    font-family: sans-serif;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-photo-label {
+    font-family: sans-serif;
+  font-weight: 600;
+}
+
+#edit-photo-title {
+    font-family: sans-serif;
+    margin-bottom: 35px;
+}

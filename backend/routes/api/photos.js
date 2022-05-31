@@ -10,12 +10,26 @@ router.get("/", asyncHandler(async function(req, res) {
     return res.json(photos);
 }))
 
-router.get(`/:id`, asyncHandler(async function(req, res) {
+router.get("/:id", asyncHandler(async function(req, res) {
     const photo = await db.Photo.findByPk(req.params.id, {
         include: { model: db.User }
     });
     console.log("PHOTO SELECTED ONE", photo)
     return res.json(photo);
+}))
+
+router.put("/:id", asyncHandler(async function(req, res) {
+    const { imageUrl, title } = req.body;
+    const updatePhoto = await db.Photo.findByPk(req.params.id);
+
+    await updatePhoto.update({
+        imageUrl,
+        title
+    });
+
+    return res.json(
+        updatePhoto
+    )
 }))
 
 module.exports = router;

@@ -3,6 +3,7 @@ import { getPhotos } from "../../store/photos";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getPhotoDetail } from "../../store/photos";
+import EditPhotoFormModal from "../EditPhotoModal";
 
 import "./PhotoDetail.css";
 
@@ -16,8 +17,8 @@ const PhotoDetail = () => {
     return photo.id === +id;
   })[0];
 
-  console.log("PHOTO", photo);
-  console.log("SELECT PHOTO", selectPhoto?.imageUrl);
+//   console.log("PHOTO", photo);
+//   console.log("SELECT PHOTO", selectPhoto?.imageUrl);
 
   useEffect(() => {
     dispatch(getPhotoDetail(id));
@@ -33,12 +34,12 @@ const PhotoDetail = () => {
     <div>
       <div id="photo-detail-container">
         <h1 id="photo-title">{selectPhoto?.description}</h1>
-        <img id="selected-photo" src={selectPhoto?.imageUrl}></img>
+        <img id="selected-photo" className="select-photo" src={selectPhoto?.imageUrl}></img>
+        <div id="below-photo-spacer"></div>
         <div id="photo-detail-button-container">
-          <button className="photo-detail-btn">Edit</button>
+          <EditPhotoFormModal />
           <button className="photo-detail-btn">Delete</button>
         </div>
-        <div id="below-photo-spacer"></div>
       </div>
     </div>
   );
