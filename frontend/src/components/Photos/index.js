@@ -8,7 +8,7 @@ export default function Photos() {
     return Object.values(state.photos);
   });
 
-  console.log(photos)
+  // console.log(photos)
 
   const dispatch = useDispatch();
 
