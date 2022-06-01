@@ -34,6 +34,8 @@ const CollectionDetail = () => {
   return (
     <div id="collection-detail-body">
       <h1 id="collection-title">{selectCollection?.title}</h1>
+      <button>Edit</button>
+      <button>Delete</button>
       <div id="imgs-container">
         {photo.map((image) => (
           <li key={image.id} id="li">

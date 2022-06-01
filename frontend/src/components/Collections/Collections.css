@@ -17,7 +17,7 @@
     width: fit-content;
 }
 
-#select-collection-title {
+.select-collection-title {
     margin: 20px 0 20px;
     font-size: 25px;
     color: black;
@@ -26,12 +26,36 @@
 
 #collection-cover-img {
     width: 50%;
-  border: #00000012 10px solid;
-  cursor: pointer;
+    border: #00000012 10px solid;
+    cursor: pointer;
 }
 
 #anchor {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#add-collection-btn {
+    display: flex;
+    height: 276px;
+    width: 276px;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid black;
+    font-size: 100px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#collections-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#add-collection-container {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
 }
