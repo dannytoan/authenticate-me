@@ -1,6 +1,10 @@
 import "./Splash.css";
+import { useSelector } from "react-redux";
+
 
 function Splash() {
+  const sessionUser = useSelector((state) => state.sessionUser);
+
   return (
     <div id="splash-body">
       <div>
@@ -17,9 +21,11 @@ function Splash() {
           </video>
           <div id="video-text-container">
             <h2 id="video-text-title">Find your inspiration.</h2>
-            <a href="/signup">
+            {sessionUser ? <a href="/signup">
               <button id="video-signup-button">Start for Free</button>
-            </a>
+            </a> : <a href="/photos">
+              <button id="video-signup-button">Browse Looks</button>
+            </a>}
           </div>
         </div>
       </div>
