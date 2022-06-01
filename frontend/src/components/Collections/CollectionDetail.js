@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import photo from "../../../../backend/db/models/photo";
 import { getCollectionDetail } from "../../store/collections";
 
 const CollectionDetail = () => {
@@ -17,8 +16,8 @@ const CollectionDetail = () => {
         return collection.id === +id;
     })[0];
 
-    const collectionPhotos = collections.find(photos =>
-        selectCollection.id === photo.CollectionId(?))
+    // const collectionPhotos = collections.find(photos =>
+    //     selectCollection.id === photo.CollectionId(?))
 
 
     useEffect(() => {
@@ -32,7 +31,7 @@ const CollectionDetail = () => {
 
     return (
         <div>
-            <h1>{selectCollection.title}</h1>
+            <h1>{selectCollection?.title}</h1>
             <div></div>
         </div>
     )
