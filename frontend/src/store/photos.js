@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD = "photos/LOAD";
 const ADD_LOOK = "photos/ADD_LOOK";
+const DELETE = "photos/DELETE"
 
 // POJO ACTION CREATORS
 const load = (gallery) => ({
@@ -16,6 +17,11 @@ const addOneLook = (look) => {
     look,
   };
 };
+
+const deleting = (id) => ({
+  type: DELETE,
+  id
+})
 
 // THUNK ACTION CREATORS
 export const getPhotos = () => async (dispatch) => {
@@ -73,7 +79,20 @@ export const editPhotoDetail = (id, payload) => async (dispatch) => {
   }
 
   return look;
-}
+};
+
+export const deleteLook = (selectId) => async dispatch => {
+  const response = await csrfFetch(`/api/photos/${selectId}`, {
+    method: 'DELETE',
+  });
+
+  console.log("RESPONSE IN STORE", response)
+
+  if (response.ok) {
+    dispatch(deleting(selectId));
+  }
+  return response;
+};
 
 // REDUCER
 const photosReducer = (state = {}, action) => {
@@ -90,6 +109,9 @@ const photosReducer = (state = {}, action) => {
     case ADD_LOOK:
       const newState = {...state, [action.look.id]: action.look };
       return newState;
+    case DELETE:
+      const updatedState = { ...state };
+      return updatedState;
     default:
       return state;
   }

@@ -19,8 +19,8 @@ const validatePostPhoto = [
   check('description')
     .exists({ checkFalsy: true})
     .withMessage('Please provide a title.')
-    .isLength({ min:5, max: 50})
-    .withMessage('Title must contain at least 5 and no more than 50 characters.'),
+    .isLength({ min:5, max: 256})
+    .withMessage('Title must contain at least 5 and no more than 256 characters.'),
 
     handleValidationErrors
 ]

@@ -3,7 +3,8 @@ const asyncHandler = require('express-async-handler');
 const db = require("../../db/models")
 
 const { check } = require('express-validator')
-const { handleValidationErrors } = require('../../utils/validation')
+const { handleValidationErrors } = require('../../utils/validation');
+// const { restoreCSRF } = require('../../../frontend/src/store/csrf');
 
 const router = express.Router();
 
@@ -52,6 +53,22 @@ router.put("/:id", editPhotoValidators, asyncHandler(async function(req, res) {
     return res.json(
         updatePhoto
     )
+}))
+
+router.delete("/:id", asyncHandler(async function (req, res) {
+    // const id = await db.Photo.destroy(req.params.id);
+    // return res.json({ id })
+    const deletePhoto = await db.Photo.findByPk(req.params.id);
+
+    if (deletePhoto !== undefined || deletePhoto !== null) {
+        await deletePhoto.destroy();
+    }
+
+    res.json({
+        message: "Look successfully deleted"
+    })
+
+    return res.redirect("/api/photos")
 }))
 
 module.exports = router;
