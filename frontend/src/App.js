@@ -10,6 +10,7 @@ import CreateALook from "./components/Photos/CreateALook";
 import Splash from "./components/Splash";
 import PhotoDetail from "./components/Photos/PhotoDetail";
 import Collections from "./components/Collections";
+import CollectionDetail from "./components/Collections/CollectionDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,9 @@ function App() {
             </Route>
             <Route exact path="/collections">
               <Collections />
+            </Route>
+            <Route exact path="/collections/:id">
+              <CollectionDetail />
             </Route>
           </Switch>
         )}

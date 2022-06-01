@@ -11,5 +11,13 @@ router.get("/", asyncHandler(async function(req, res) {
     return res.json({collections})
 }))
 
+router.get("/:id", asyncHandler(async function(req, res) {
+    const collection = await db.Collection.findByPk(req.params.id, {
+        include: { model: db.User }
+    });
+
+    return res.json(collection);
+}))
+
 
 module.exports = router;

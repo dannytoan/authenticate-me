@@ -37,7 +37,7 @@ router.get("/:id", asyncHandler(async function(req, res) {
     const photo = await db.Photo.findByPk(req.params.id, {
         include: { model: db.User }
     });
-    console.log("PHOTO SELECTED ONE", photo)
+    // console.log("PHOTO SELECTED ONE", photo)
     return res.json(photo);
 }))
 
