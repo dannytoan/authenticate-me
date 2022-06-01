@@ -14,6 +14,7 @@ const validatePostPhoto = [
     .exists({ checkFalsy: true })
     .withMessage('Please provide an Image URL.')
     .isLength({ min: 1 })
+    .withMessage('Image URL must be more than 1 character.')
     .isURL({ checkFalsy: true})
     .withMessage('Please provide a valid Image URL.'),
   check('description')
@@ -29,13 +30,14 @@ router.post(
   "/",
   validatePostPhoto,
   asyncHandler(async function (req, res) {
-    const photo = await db.Photo.build(req.body);
+    const photo = await db.Photo.create(req.body);
 
-    await photo.save();
+    // await photo.save();
 
-    if(photo) {
+    // if(photo) {
+    //   return res.json(photo);
+    // }
       return res.json(photo);
-    }
   })
 );
 

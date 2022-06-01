@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createLook } from "../../store/photos";
 import { useHistory } from "react-router-dom";
@@ -12,7 +12,6 @@ const CreateALook = () => {
   const [errors, setErrors] = useState([]);
 
   const sessionUser = useSelector((state) => state.session.user);
-  console.log(sessionUser, "SESSION USER");
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -29,14 +28,14 @@ const CreateALook = () => {
       description,
     };
 
-    let createdLook = dispatch(createLook(payload))
+    let createdLook = dispatch(createLook(payload));
 
     dispatch(createLook(payload)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
 
-    if (errors.length < 0) {
+    if (errors.length === 0) {
       history.push(`/photos/`);
       setErrorMessages({});
     }
@@ -52,7 +51,7 @@ const CreateALook = () => {
         </ul>
       </div>
       <div id="form-container">
-        <form id="form" onSubmit={(e) => handleSubmit(e)}>
+        <form id="form" onSubmit={handleSubmit}>
           <label>Image URL: </label>
           <input
             type="text"
@@ -77,9 +76,15 @@ const CreateALook = () => {
             value={collectionId}
             onChange={(e) => setCollectionId(e.target.value)}
           ></select> */}
-          <button className="submit" disabled={errors.length > 0} href="/photos">
-            Submit
-          </button>
+          {/* <a href="/photos"> */}
+            <button
+              className="submit"
+              // disabled={errors.length > 0}
+              // href="/photos"
+            >
+              Submit
+            </button>
+          {/* </a> */}
         </form>
         <img src={photo.imageUrl}></img>
       </div>
