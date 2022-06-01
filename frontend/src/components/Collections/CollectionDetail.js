@@ -31,7 +31,7 @@ const CollectionDetail = () => {
 
     return (
         <div>
-            <h1>{selectCollection.title}</h1>
+            <h1>{selectCollection?.title}</h1>
             <div></div>
         </div>
     )
