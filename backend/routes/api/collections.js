@@ -16,7 +16,7 @@ router.get("/:id", asyncHandler(async function(req, res) {
         include: { model: db.User }
     });
 
-    const photos = await db.Photo.findAll({ where: {collectionId: db.Photo.collectionId}})
+    const photos = await db.Photo.findAll({ where: {collectionId: collection.id} })
 
     return res.json(collection), res.json(photos);
 }))

@@ -18,7 +18,7 @@ const CollectionDetail = () => {
   })[0];
 
   const photo = Object.values(useSelector((state) => state.photos));
-  const filteredPhotos = photo.filter(selectPhoto => selectPhoto.collectionId === id)
+  const filteredPhotos = photo.filter(selectPhoto => selectPhoto.collectionId === +id)
   console.log("PHOTO INSIDE COLLECTION DETAIL", photo)
   console.log("FILTERED PHOTOS", filteredPhotos)
 
@@ -40,7 +40,7 @@ const CollectionDetail = () => {
       <button>Edit</button>
       <button>Delete</button>
       <div id="imgs-container">
-        {photo.map((image) => (
+        {filteredPhotos.map((image) => (
           <li key={image.id} id="li">
             <a href={`/photos/${image.id}`}>
               <img id="collection-detail-img" src={image.imageUrl} />
