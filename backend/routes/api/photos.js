@@ -11,9 +11,9 @@ const router = express.Router();
 
 const editPhotoValidators = [
     check('imageUrl')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide an Image URL.')
-    .isLength({ min: 1 })
+    .exists({ checkFalsy: false })
+    // .withMessage('Please provide an Image URL.')
+    // .isLength({ min: 1 })
     .isURL({ checkFalsy: true})
     .withMessage('Please provide a valid Image URL.'),
   check('description')

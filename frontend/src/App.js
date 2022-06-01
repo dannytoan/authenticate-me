@@ -9,6 +9,7 @@ import Photos from "./components/Photos";
 import CreateALook from "./components/Photos/CreateALook";
 import Splash from "./components/Splash";
 import PhotoDetail from "./components/Photos/PhotoDetail";
+import Collections from "./components/Collections";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
             </Route>
             <Route exact path="/photos/:id">
               <PhotoDetail />
+            </Route>
+            <Route exact path="/collections">
+              <Collections />
             </Route>
           </Switch>
         )}

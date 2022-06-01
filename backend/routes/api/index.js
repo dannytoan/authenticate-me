@@ -6,6 +6,7 @@ const { setTokenCookie } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
 const photosRouter = require('./photos')
 const addLookRouter = require('./addLook')
+const collectionsRouter = require('./collections')
 
 
 router.use('/session', sessionRouter);
@@ -15,6 +16,11 @@ router.use('/users', usersRouter);
 router.use('/photos', photosRouter);
 
 router.use('/photos/new', addLookRouter);
+
+router.use('/collections', collectionsRouter);
+
+
+
 
 router.post('/test', (req, res) => {
     res.json({ requestBody: req.body });

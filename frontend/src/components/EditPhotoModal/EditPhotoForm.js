@@ -23,17 +23,17 @@ function EditPhotoForm() {
       imageUrl,
     };
 
-    let updatedPhoto = dispatch(editPhotoDetail(id, payload));
+    // let updatedPhoto = dispatch(editPhotoDetail(id, payload));
 
     dispatch(editPhotoDetail(payload)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
 
-    if (updatedPhoto) {
-      history.push(`/photos/${id}`);
+    // if (updatedPhoto) {
       setErrorMessages({});
-    }
+    //   history.push(`/photos/${id}`);
+    // }
   };
 
   return (
@@ -41,9 +41,9 @@ function EditPhotoForm() {
       <h1 id="edit-photo-title">Edit Photo</h1>
       <form id="edit-photo-form" onSubmit={handleSubmit}>
         <ul>
-          {errors.map((error, idx) => (
+          {(errors.length) ? (errors.map((error, idx) => (
             <li key={idx}>{error}</li>
-          ))}
+          ))) : <></>}
         </ul>
         <label className="edit-photo-label">Title:</label>
         <input
@@ -58,7 +58,7 @@ function EditPhotoForm() {
           onChange={(e) => setImageUrl(e.target.value)}
           placeholder="Enter a new image URL"
           className="edit-photo-input"
-          required
+          // required
         />
         <button id="edit-photo-submit" type="submit">
           Submit Changes
