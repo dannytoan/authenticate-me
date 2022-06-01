@@ -49,8 +49,8 @@ const collectionsReducer = (state = {}, action) => {
         normalizedCollections[collection.id] = collection;
       });
       return {
+          ...state,
         ...normalizedCollections,
-        ...state,
       };
     case ADD_COL:
         const newState = {...state, [action.collection.id]: action.collection };
