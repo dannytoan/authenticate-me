@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getCollectionDetail } from "../../store/collections";
-import { getPhotoDetail, getPhotos } from "../../store/photos";
+import { getPhotos } from "../../store/photos";
+import "./CollectionDetail.css"
 
 const CollectionDetail = () => {
   const dispatch = useDispatch();
@@ -31,13 +32,14 @@ const CollectionDetail = () => {
   }, []);
 
   return (
-    <div>
-      <h1>{selectCollection?.title}</h1>
-      <div>
+    <div id="collection-detail-body">
+      <h1 id="collection-title">{selectCollection?.title}</h1>
+      <div id="imgs-container">
         {photo.map((image) => (
-          <li key={image.id}>
+          <li key={image.id} id="li">
             <a href={`/photos/${image.id}`}>
-              <img src={image.imageUrl} />
+              <img id="collection-detail-img" src={image.imageUrl} />
+                <div id="image-title">{image.description}</div>
             </a>
           </li>
         ))}
