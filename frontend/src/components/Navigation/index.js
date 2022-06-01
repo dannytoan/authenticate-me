@@ -18,9 +18,9 @@ export default function Navigation({ isLoaded }) {
     sessionLinks = (
       <div>
         <LoginFormModal />
-        <NavLink to="/signup" className="auth-btn signup-btn btn">
+        {/* <NavLink to="/signup" className="auth-btn signup-btn btn">
           <button class="auth-btn">Sign Up</button>
-        </NavLink>
+        </NavLink> */}
         {/* <ProfileButton user={sessionUser} /> */}
       </div>
     );
