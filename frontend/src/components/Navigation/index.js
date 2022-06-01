@@ -43,6 +43,9 @@ export default function Navigation({ isLoaded }) {
           <a id="github-btn" href="https://github.com/dannytoan/designr-react-solo-project" target="_blank">
             <button className="auth-btn">Github</button>
           </a>
+          <a href="/collections">
+            <button className="auth-btn">Collections</button>
+          </a>
           <a href="/photos">
             <button className="auth-btn">Looks</button>
           </a>
