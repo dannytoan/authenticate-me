@@ -49,7 +49,7 @@ module.exports = {
         },
         {
           userId: 1,
-          collectionId: 1,
+          collectionId: 2,
           imageUrl:
           "https://wwd.com/wp-content/uploads/2022/01/ZuhairMurad-couture-SS22-DM-023.jpg?w=800",
           description: "Zuhair Murad Couture Spring 2022",
@@ -67,7 +67,7 @@ module.exports = {
         },
         {
           userId: 1,
-          collectionId: 1,
+          collectionId: 2,
           imageUrl:
           "https://wwd.com/wp-content/uploads/2022/01/Elie-Saab-CS22-DM-04.jpg?w=800",
           description: "Elie Saab Couture Spring 2022",
@@ -85,7 +85,7 @@ module.exports = {
         },
         {
           userId: 1,
-          collectionId: 1,
+          collectionId: 2,
           imageUrl:
           "https://wwd.com/wp-content/uploads/2021/09/Kaushik_Velendra_rtw_ss_2022_13.jpg?w=800",
           description: "Kaushik Velendra RTW Spring 2022",
@@ -94,7 +94,7 @@ module.exports = {
         },
         {
           userId: 1,
-          collectionId: 1,
+          collectionId: 2,
           imageUrl:
           "https://wwd.com/wp-content/uploads/2021/09/decaffine-S22-001.jpg?w=800",
           description: "De Caffeine Homme Men's Spring 2022",
