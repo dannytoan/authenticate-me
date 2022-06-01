@@ -1,12 +1,18 @@
 import { csrfFetch } from "./csrf";
 
 const LOAD_COL = "collections/LOAD_COL";
+const ADD_COL = "collections/ADD_COL";
 
 // POJO ACTION CREATORS
 const loadCollections = (collection) => ({
   type: LOAD_COL,
   collection,
 });
+
+const addCollection = (collection) => ({
+    type: ADD_COL,
+    collection,
+})
 
 // THUNK ACTION CREATORS
 export const getCollections = () => async (dispatch) => {
@@ -22,6 +28,18 @@ export const getCollections = () => async (dispatch) => {
   return collections;
 };
 
+export const getCollectionDetail = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/collections/${id}`)
+
+    const collection = await res.json();
+
+    if (collection) {
+        dispatch(addCollection(collection))
+    }
+
+    return collection;
+}
+
 // REDUCER
 const collectionsReducer = (state = {}, action) => {
   switch (action.type) {
@@ -34,6 +52,9 @@ const collectionsReducer = (state = {}, action) => {
         ...normalizedCollections,
         ...state,
       };
+    case ADD_COL:
+        const newState = {...state, [action.collection.id]: action.collection };
+        return newState;
     default:
       return state;
   }
