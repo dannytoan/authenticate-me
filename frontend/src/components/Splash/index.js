@@ -4,6 +4,18 @@ import { useSelector } from "react-redux";
 
 function Splash() {
   const sessionUser = useSelector((state) => state.sessionUser);
+  // let sessionLinks;
+//   if (sessionUser) {
+//     sessionLinks = (<a href="/signup">
+//     <button id="video-signup-button">Start for Free</button>
+//   </a>)
+//   } else {
+//     sessionLinks = (
+// <a href="/photos">
+//               <button id="video-signup-button">Browse Looks</button>
+//             </a>
+//     )
+//   }
 
   return (
     <div id="splash-body">
@@ -21,11 +33,12 @@ function Splash() {
           </video>
           <div id="video-text-container">
             <h2 id="video-text-title">Find your inspiration.</h2>
-            {sessionUser ? <a href="/signup">
+            {(!sessionUser) ? <a href="/signup">
               <button id="video-signup-button">Start for Free</button>
             </a> : <a href="/photos">
               <button id="video-signup-button">Browse Looks</button>
             </a>}
+            {/* {sessionLinks} */}
           </div>
         </div>
       </div>

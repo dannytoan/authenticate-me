@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { getPhotos } from "../../store/photos";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getPhotoDetail } from "../../store/photos";
+import { useParams, useHistory } from "react-router-dom";
+import { getPhotoDetail, deleteLook } from "../../store/photos";
 import EditPhotoFormModal from "../EditPhotoModal";
 
 import "./PhotoDetail.css";
@@ -10,6 +10,7 @@ import "./PhotoDetail.css";
 const PhotoDetail = () => {
   const dispatch = useDispatch();
   const params = useParams();
+  const history = useHistory();
   const { id } = params;
 
   const photo = Object.values(useSelector((state) => state.photos));
@@ -28,8 +29,6 @@ const PhotoDetail = () => {
     }
   }, [dispatch, id]);
 
-  useEffect(() => {});
-
   return (
     <div>
       <div id="photo-detail-container">
@@ -38,7 +37,7 @@ const PhotoDetail = () => {
         <div id="below-photo-spacer"></div>
         <div id="photo-detail-button-container">
           <EditPhotoFormModal />
-          <button className="photo-detail-btn">Delete</button>
+          <button className="photo-detail-btn" onClick={() => dispatch(deleteLook(id))}>Delete</button>
         </div>
       </div>
     </div>
