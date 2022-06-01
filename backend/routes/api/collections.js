@@ -17,7 +17,6 @@ router.get("/:id", asyncHandler(async function(req, res) {
     });
 
     const photos = await db.Photo.findAll({ where: {collectionId: req.params.id}})
-    console.log("===PHOTOS INSIDE API ROUTE====", photos)
 
     return res.json(collection), res.json(photos);
 }))
