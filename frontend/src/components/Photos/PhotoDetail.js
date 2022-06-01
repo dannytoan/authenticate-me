@@ -40,6 +40,7 @@ const PhotoDetail = () => {
           <button className="photo-detail-btn" onClick={() => dispatch(deleteLook(id))}>Delete</button>
           </a>
         </div>
+        <div id="below-photo-spacer"></div>
       </div>
     </div>
   );
