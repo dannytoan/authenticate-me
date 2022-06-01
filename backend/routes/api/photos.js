@@ -67,8 +67,6 @@ router.delete("/:id", asyncHandler(async function (req, res) {
     res.json({
         message: "Look successfully deleted"
     })
-
-    return res.redirect("/api/photos")
 }))
 
 module.exports = router;
