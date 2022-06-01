@@ -28,8 +28,6 @@ const CreateALook = () => {
       description,
     };
 
-    let createdLook = dispatch(createLook(payload));
-
     dispatch(createLook(payload)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
