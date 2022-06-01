@@ -22,5 +22,11 @@ router.get("/:id", asyncHandler(async function(req, res) {
     return res.json(collection), res.json(photos);
 }))
 
+router.post("/", asyncHandler(async function (req, res) {
+    const collection = await db.Collection.create(req.body);
+
+    return res.json(collection);
+}))
+
 
 module.exports = router;
