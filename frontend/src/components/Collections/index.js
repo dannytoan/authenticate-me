@@ -18,11 +18,15 @@ export default function Collections() {
       <h1 id="collections-title">COLLECTIONS</h1>
 
       <div id="collections-container">
+        <div id="add-collection-container">
+          <div id="add-collection-btn">+</div>
+          <h3 class="select-collection-title">Add Collection</h3>
+        </div>
         {collections.map((collection) => (
           <div key={collection.id} id="collections-li">
             <a id="anchor" href={`/collections/${collection.id}`}>
               <img id="collection-cover-img" src={collection.coverImg} />
-            <h3 id="select-collection-title">{collection.title}</h3>
+              <h3 class="select-collection-title">{collection.title}</h3>
             </a>
           </div>
         ))}
