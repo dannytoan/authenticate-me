@@ -59,3 +59,17 @@
   flex-direction: column;
   align-items: center;
 }
+
+#add-collection-click-btn {
+    border: none;
+    padding: 10px 79px;
+    font-family: sans-serif;
+    cursor: pointer;
+    z-index: 1;
+    font-weight: 600;
+    font-size: 18px;
+    background: black;
+    color: white;
+    margin: 15px;
+    z-index: 0;
+}

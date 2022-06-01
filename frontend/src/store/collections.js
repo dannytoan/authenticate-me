@@ -40,6 +40,21 @@ export const getCollectionDetail = (id) => async (dispatch) => {
     return collection;
 }
 
+export const createCollection = (payload) => async (dispatch) => {
+    const res = await csrfFetch(`/api/collections`, {
+        method: "POST",
+        body: JSON.stringify(payload),
+    })
+
+    const collection = await res.json();
+
+    if (collection) {
+        dispatch(addCollection(collection));
+    }
+
+    return collection;
+}
+
 // REDUCER
 const collectionsReducer = (state = {}, action) => {
   switch (action.type) {

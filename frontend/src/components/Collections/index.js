@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { getCollections } from "../../store/collections";
 import { useSelector, useDispatch } from "react-redux";
+import AddCollectionFormModal from "../AddCollectionModal";
+
 import "./Collections.css";
 
 export default function Collections() {
@@ -20,7 +22,7 @@ export default function Collections() {
       <div id="collections-container">
         <div id="add-collection-container">
           <div id="add-collection-btn">+</div>
-          <h3 class="select-collection-title">Add Collection</h3>
+            <AddCollectionFormModal />
         </div>
         {collections.map((collection) => (
           <div key={collection.id} id="collections-li">
