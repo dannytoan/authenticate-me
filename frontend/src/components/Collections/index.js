@@ -15,12 +15,13 @@ export default function Collections() {
 
   return (
       <div id="collections-body">
-          <h1>This is collections!!!!!!!!!!</h1>
+          <h1>COLLECTIONS</h1>
             <div>
                 <ul>
                     {collections.map((collection) => (
                         <li key={collection.id}>
-                            {collection.title}
+                            <img src={collection.coverImg}/>
+                            <h3>{collection.title}</h3>
                         </li>
                     ))}
                 </ul>
