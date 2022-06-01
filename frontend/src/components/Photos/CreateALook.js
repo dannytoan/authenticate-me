@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createLook } from "../../store/photos";
 import { useHistory } from "react-router-dom";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import { ValidationError } from "../../utils/validationError";
 import "./CreateALook.css";
 
 const CreateALook = () => {
@@ -13,8 +11,6 @@ const CreateALook = () => {
   const [collectionId, setCollectionId] = useState(null);
   const [errors, setErrors] = useState([]);
 
-  //   const collection = useSelector(state => state.photo)
-  //   console.log("COLLECTION", collection)
   const sessionUser = useSelector((state) => state.session.user);
   console.log(sessionUser, "SESSION USER");
 
@@ -40,7 +36,7 @@ const CreateALook = () => {
       if (data && data.errors) setErrors(data.errors);
     });
 
-    if (errors.length < 0 && createdLook) {
+    if (errors.length < 0) {
       history.push(`/photos/`);
       setErrorMessages({});
     }
