@@ -37,7 +37,9 @@ const PhotoDetail = () => {
         <div id="below-photo-spacer"></div>
         <div id="photo-detail-button-container">
           <EditPhotoFormModal />
+          <a href="/photos">
           <button className="photo-detail-btn" onClick={() => dispatch(deleteLook(id))}>Delete</button>
+          </a>
         </div>
       </div>
     </div>
