@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createCollection } from "../../store/collections";
 import { useParams, useHistory } from "react-router-dom";
 import "./AddCollection.css";
@@ -13,10 +13,13 @@ function AddCollectionForm() {
   const [errorMessages, setErrorMessages] = useState({});
   const [errors, setErrors] = useState([]);
 
+  const sessionUser = useSelector((state) => state.session.user);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
+      userId: sessionUser.id,
       title,
       coverImg,
     };

@@ -18,6 +18,9 @@ const CollectionDetail = () => {
   })[0];
 
   const photo = Object.values(useSelector((state) => state.photos));
+  const filteredPhotos = photo.filter(selectPhoto => selectPhoto.collectionId === id)
+  console.log("PHOTO INSIDE COLLECTION DETAIL", photo)
+  console.log("FILTERED PHOTOS", filteredPhotos)
 
   useEffect(() => {
     dispatch(getCollectionDetail(id));
