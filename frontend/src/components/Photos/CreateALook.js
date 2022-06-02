@@ -78,7 +78,7 @@ const CreateALook = () => {
             className="input select"
             onChange={(e) => setCollectionId(e.target.value)}
           >
-            {/* <option value={null}>Choose a collection</option> */}
+            <option value={null}>Choose a collection</option>
             {collections.map((collection) => (
               <option key={collection.id} value={collection.id}>
                 {collection.title}

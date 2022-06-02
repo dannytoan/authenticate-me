@@ -11,7 +11,7 @@ const router = express.Router();
 
 const editPhotoValidators = [
     check('imageUrl')
-    .exists({ checkFalsy: false })
+    .exists({ checkFalsy: true })
     // .withMessage('Please provide an Image URL.')
     // .isLength({ min: 1 })
     .isURL({ checkFalsy: true})
@@ -19,7 +19,7 @@ const editPhotoValidators = [
   check('description')
     .exists({ checkFalsy: true})
     .withMessage('Please provide a title.')
-    .isLength({ min:5, max: 256})
+    .isLength({ min:1, max: 256})
     .withMessage('Title must contain at least 5 and no more than 256 characters.'),
 
     handleValidationErrors
@@ -46,8 +46,8 @@ router.put("/:id", editPhotoValidators, asyncHandler(async function(req, res) {
     const updatePhoto = await db.Photo.findByPk(req.params.id);
 
     await updatePhoto.update({
-        imageUrl,
-        description
+        description,
+        imageUrl
     });
 
     return res.json(

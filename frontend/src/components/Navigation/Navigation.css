@@ -88,6 +88,13 @@ cursor: pointer;
 }
 
 #signout-button {
-    display: flex;
+    margin-right: 10px;
+    border: none;
+    background-color: black;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    padding: 5px 15px;
 
 }

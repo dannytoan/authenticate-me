@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { editPhotoDetail } from "../../store/photos";
 import { useParams, useHistory } from "react-router-dom";
+import { Modal } from '../../context/Modal';
 import "./EditPhoto.css";
 
 function EditPhotoForm() {
@@ -25,7 +26,7 @@ function EditPhotoForm() {
 
     // let updatedPhoto = dispatch(editPhotoDetail(id, payload));
 
-    dispatch(editPhotoDetail(payload)).catch(async (res) => {
+    dispatch(editPhotoDetail(id, payload)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
