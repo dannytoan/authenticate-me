@@ -1,31 +1,55 @@
-const express = require('express');
-const asyncHandler = require('express-async-handler');
-const db = require("../../db/models")
+const express = require("express");
+const asyncHandler = require("express-async-handler");
+const db = require("../../db/models");
 
 const router = express.Router();
 
+router.get(
+  "/",
+  asyncHandler(async function (req, res) {
+    const collections = await db.Collection.findAll({ include: db.Photo });
 
-router.get("/", asyncHandler(async function(req, res) {
-    const collections = await db.Collection.findAll({include: db.Photo});
+    return res.json({ collections });
+  })
+);
 
-    return res.json({collections})
-}))
-
-router.get("/:id", asyncHandler(async function(req, res) {
+router.get(
+  "/:id",
+  asyncHandler(async function (req, res) {
     const collection = await db.Collection.findByPk(req.params.id, {
-        include: { model: db.User }
+      include: { model: db.User },
     });
 
-    const photos = await db.Photo.findAll({ where: {collectionId: collection.id} })
+    const photos = await db.Photo.findAll({
+      where: { collectionId: collection.id },
+    });
 
     return res.json(collection), res.json(photos);
-}))
+  })
+);
 
-router.post("/", asyncHandler(async function (req, res) {
+router.post(
+  "/",
+  asyncHandler(async function (req, res) {
     const collection = await db.Collection.create(req.body);
 
     return res.json(collection);
-}))
+  })
+);
 
+router.delete(
+  "/:id",
+  asyncHandler(async function (req, res) {
+    const deleteCollection = await db.Collection.findByPk(req.params.id);
+
+    if (deleteCollection !== undefined || deleteCollection !== null) {
+        await deleteCollection.destroy();
+    }
+
+    res.json({
+        message: "Collection successfully deleted"
+    })
+})
+);
 
 module.exports = router;

@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-import { getCollectionDetail } from "../../store/collections";
+import {
+  getCollectionDetail,
+  deleteSelectedCollection,
+} from "../../store/collections";
 import { getPhotos } from "../../store/photos";
-import "./CollectionDetail.css"
+import "./CollectionDetail.css";
 
 const CollectionDetail = () => {
   const dispatch = useDispatch();
@@ -18,9 +21,9 @@ const CollectionDetail = () => {
   })[0];
 
   const photo = Object.values(useSelector((state) => state.photos));
-  const filteredPhotos = photo.filter(selectPhoto => selectPhoto.collectionId === +id)
-  console.log("PHOTO INSIDE COLLECTION DETAIL", photo)
-  console.log("FILTERED PHOTOS", filteredPhotos)
+  const filteredPhotos = photo.filter(
+    (selectPhoto) => selectPhoto.collectionId === +id
+  );
 
   useEffect(() => {
     dispatch(getCollectionDetail(id));
@@ -36,15 +39,19 @@ const CollectionDetail = () => {
 
   return (
     <div id="collection-detail-body">
+      <a href="/collections">
+        <button className="ud-btns" onClick={() => dispatch(deleteSelectedCollection(id))}>
+          Delete
+        </button>
+      </a>
       <h1 id="collection-title">{selectCollection?.title}</h1>
-      <button>Edit</button>
-      <button>Delete</button>
+      {/* <button>Edit</button> */}
       <div id="imgs-container">
         {filteredPhotos.map((image) => (
           <li key={image.id} id="li">
             <a href={`/photos/${image.id}`}>
               <img id="collection-detail-img" src={image.imageUrl} />
-                <div id="image-title">{image.description}</div>
+              <div id="image-title">{image.description}</div>
             </a>
           </li>
         ))}
