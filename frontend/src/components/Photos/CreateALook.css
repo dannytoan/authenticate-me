@@ -30,3 +30,22 @@
 .select {
     width: 508px;
 }
+
+#add-a-look-errors {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: flex-end;
+    left: 264px;
+    bottom: -52px;
+}
+
+.add-a-look-li {
+    list-style: none;
+    font-family: sans-serif;
+    color: red;
+}
+
+.add-a-look-labels {
+    font-family: sans-serif;
+}
