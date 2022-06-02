@@ -37,8 +37,10 @@ router.post(
     await photo.save();
 
     if (photo) {
-      return res.json(photo);
+      res.json(photo)
+      res.redirect("/photos");
     }
+
   })
 );
 
