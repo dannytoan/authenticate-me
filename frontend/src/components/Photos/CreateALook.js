@@ -22,6 +22,7 @@ const CreateALook = () => {
     dispatch(getCollections());
   }, [dispatch]);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,11 +39,16 @@ const CreateALook = () => {
     });
 
 
+    if (errors.length > 0 && payload) {
+      return;
+    }
+
     setErrors([]);
 
-    if (errors.length < 0 && payload) {
-      history.push(`/photos`);
+    if (errors.length === 0){
+        history.push(`/photos`);
     }
+
   };
 
   return (
@@ -89,7 +95,6 @@ const CreateALook = () => {
           {/* <a href="/photos"> */}
           <button
             className="submit"
-            onClick={handleSubmit}
           >
             Submit
           </button>

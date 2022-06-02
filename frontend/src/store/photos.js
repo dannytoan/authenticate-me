@@ -11,7 +11,7 @@ const load = (gallery) => ({
 });
 
 const addOneLook = (look) => {
-  console.log("===== HIT POJO ACTION =====");
+  // console.log("===== HIT POJO ACTION =====");
   return {
     type: ADD_LOOK,
     look,

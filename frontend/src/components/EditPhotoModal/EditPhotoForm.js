@@ -7,7 +7,12 @@ import { useParams, useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import "./EditPhoto.css";
 
+import { useModalContext } from "../../context/Modal"
+
 function EditPhotoForm() {
+
+  const { showModal, setShowModal } = useModalContext();
+
   const { id } = useParams();
   const history = useHistory();
 
@@ -18,15 +23,12 @@ function EditPhotoForm() {
 
   const collections = Object.values(useSelector((state) => state.collections));
 
-
-
   const dispatch = useDispatch();
   const [description, setDescription] = useState(selectPhoto?.description);
   const [imageUrl, setImageUrl] = useState(selectPhoto?.imageUrl);
   const [collectionId, setCollectionId] = useState(null);
   const [errorMessages, setErrorMessages] = useState({});
   const [errors, setErrors] = useState([]);
-
 
   useEffect(() => {
     dispatch(getPhotoDetail(id));
@@ -53,8 +55,7 @@ function EditPhotoForm() {
     });
 
     // if (updatedPhoto) {
-    setErrorMessages({});
-    //   history.push(`/photos`);
+    //   setShowModal(false)
     // }
   };
 
