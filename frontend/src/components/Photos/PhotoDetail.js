@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getPhotoDetail, deleteLook } from "../../store/photos";
+import { getCollections } from "../../store/collections";
 import EditPhotoFormModal from "../EditPhotoModal";
 
 import "./PhotoDetail.css";
@@ -17,6 +18,11 @@ const PhotoDetail = () => {
     return photo.id === +id;
   })[0];
 
+  const collections = Object.values(useSelector((state) => state.collections));
+
+
+  const [collectionId, setCollectionId] = useState(null);
+
 //   console.log("PHOTO", photo);
 //   console.log("SELECT PHOTO", selectPhoto?.imageUrl);
 
@@ -28,12 +34,32 @@ const PhotoDetail = () => {
     }
   }, [dispatch, id]);
 
+  useEffect(() => {
+    dispatch(getCollections());
+  }, [dispatch]);
+
   return (
     <div>
       <div id="photo-detail-container">
         <h1 id="photo-title">{selectPhoto?.description}</h1>
         <img id="selected-photo" className="select-photo" src={selectPhoto?.imageUrl}></img>
         <div id="below-photo-spacer"></div>
+        <form>
+
+        <label>Collection: </label>
+          <select
+            className="input select"
+            onChange={(e) => setCollectionId(e.target.value)}
+            >
+            {/* <option value={null}>Choose a collection</option> */}
+            {collections.map((collection) => (
+              <option key={collection.id} value={collection.id}>
+                {collection.title}
+              </option>
+            ))}
+          </select>
+          <button>Submit</button>
+            </form>
         <div id="photo-detail-button-container">
           <EditPhotoFormModal />
           <a href="/photos">

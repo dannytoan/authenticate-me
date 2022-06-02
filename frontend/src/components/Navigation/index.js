@@ -7,11 +7,10 @@ import LogOut from "./LogOut";
 import "./Navigation.css";
 
 export default function Navigation({ isLoaded }) {
-  const sessionUser = useSelector((state) => state.sessionUser);
+  const sessionUser = useSelector((state) => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
-    {sessionUser ? <LogOut user={sessionUser} /> : <></>}
     {/* sessionLinks = <ProfileButton user={sessionUser} />; */}
 
   } else {
@@ -31,7 +30,10 @@ export default function Navigation({ isLoaded }) {
       <div id="masthead">
         <a href="/" id="logo">DESIGNR</a>
       </div>
-      <div id="masthead-buttons">{isLoaded && sessionLinks}</div>
+      <div id="masthead-buttons">{isLoaded && sessionLinks}
+
+      {sessionUser ? <LogOut user={sessionUser} /> : <></>}
+      </div>
       <ul className="nav-bg">
         <li id="auth-buttons">
           <NavLink id="home-btn" exact to="/">
