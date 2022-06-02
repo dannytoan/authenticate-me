@@ -9,7 +9,7 @@ import "./EditPhoto.css";
 
 import { useModalContext } from "../../context/Modal"
 
-function EditPhotoForm() {
+function EditPhotoForm({setShowModal}) {
 
   const { showModal, setShowModal } = useModalContext();
 
