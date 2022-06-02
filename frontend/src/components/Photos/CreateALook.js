@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createLook } from "../../store/photos";
 import { useHistory } from "react-router-dom";
+import { getCollections } from "../../store/collections";
+import { getPhotos } from "../../store/photos";
 import "./CreateALook.css";
 
 const CreateALook = () => {
@@ -16,7 +18,14 @@ const CreateALook = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const photo = useSelector((state) => Object.values(state.photos));
+  const photos = useSelector((state) => Object.values(state.photos));
+  const collections = Object.values(useSelector((state) => state.collections));
+
+
+  useEffect(() => {
+    dispatch(getCollections());
+    dispatch(getPhotos());
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,12 +77,16 @@ const CreateALook = () => {
             onChange={(e) => setDescription(e.target.value)}
             className="input"
           />
-          {/* <label>Collection: </label>
+          <label>Collection: </label>
           <select
             className="input select"
-            value={collectionId}
-            onChange={(e) => setCollectionId(e.target.value)}
-          ></select> */}
+            // onChange={(e) => setCollectionId(e.target.value)}
+          >
+            {collections.map(collection => (
+              <option key={collection.id} value={collection.id}>{collection.title}</option>
+            ))}
+
+          </select>
           {/* <a href="/photos"> */}
             <button
               className="submit"
@@ -84,7 +97,6 @@ const CreateALook = () => {
             </button>
           {/* </a> */}
         </form>
-        <img src={photo.imageUrl}></img>
       </div>
     </div>
   );
