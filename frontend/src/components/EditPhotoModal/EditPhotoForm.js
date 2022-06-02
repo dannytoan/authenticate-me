@@ -23,7 +23,7 @@ function EditPhotoForm() {
   const dispatch = useDispatch();
   const [description, setDescription] = useState(selectPhoto?.description);
   const [imageUrl, setImageUrl] = useState(selectPhoto?.imageUrl);
-  const [collectionId, setCollectionId] = useState(selectPhoto?.collectionId);
+  const [collectionId, setCollectionId] = useState(null);
   const [errorMessages, setErrorMessages] = useState({});
   const [errors, setErrors] = useState([]);
 
@@ -88,7 +88,7 @@ function EditPhotoForm() {
             className="input select"
             onChange={(e) => setCollectionId(e.target.value)}
             >
-              <option value={null}>Choose a collection</option>
+              <option value={null}>No Collection Selected</option>
             {collections.map((collection) => (
               <option key={collection.id} value={collection.id}>
                 {collection.title}
