@@ -23,8 +23,8 @@ const deleteCollection = (id) => ({
 // THUNK ACTION CREATORS
 export const getCollections = () => async (dispatch) => {
   const response = await csrfFetch("/api/collections");
-  console.log("INSIDE THE GET COLLECTIONS THUNK");
-  console.log("RESPONSE", response);
+  // console.log("INSIDE THE GET COLLECTIONS THUNK");
+  // console.log("RESPONSE", response);
   const collections = await response.json();
 
   if (response.ok) {
