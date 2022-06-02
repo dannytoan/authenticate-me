@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { editPhotoDetail, getPhotoDetail } from "../../store/photos";
+import { getCollections } from "../../store/collections";
 import { useParams, useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import "./EditPhoto.css";
@@ -15,11 +16,14 @@ function EditPhotoForm() {
     return photo.id === +id;
   })[0];
 
-  console.log("SELECTPHOTO", selectPhoto);
+  const collections = Object.values(useSelector((state) => state.collections));
+
+
 
   const dispatch = useDispatch();
   const [description, setDescription] = useState(selectPhoto?.description);
   const [imageUrl, setImageUrl] = useState(selectPhoto?.imageUrl);
+  const [collectionId, setCollectionId] = useState(selectPhoto?.collectionId);
   const [errorMessages, setErrorMessages] = useState({});
   const [errors, setErrors] = useState([]);
 
@@ -38,6 +42,7 @@ function EditPhotoForm() {
     const payload = {
       description,
       imageUrl,
+      collectionId
     };
 
     // let updatedPhoto = dispatch(editPhotoDetail(id, payload));
@@ -78,6 +83,18 @@ function EditPhotoForm() {
           className="edit-photo-input"
           // required
         />
+        <label>Collection: </label>
+          <select
+            className="input select"
+            onChange={(e) => setCollectionId(e.target.value)}
+            >
+              <option value={null}>Choose a collection</option>
+            {collections.map((collection) => (
+              <option key={collection.id} value={collection.id}>
+                {collection.title}
+              </option>
+            ))}
+          </select>
         <button id="edit-photo-submit" type="submit">
           Submit Changes
         </button>
