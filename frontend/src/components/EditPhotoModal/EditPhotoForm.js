@@ -1,20 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
-import { editPhotoDetail } from "../../store/photos";
+import { useDispatch, useSelector } from "react-redux";
+import { editPhotoDetail, getPhotoDetail } from "../../store/photos";
 import { useParams, useHistory } from "react-router-dom";
-import { Modal } from '../../context/Modal';
+import { Modal } from "../../context/Modal";
 import "./EditPhoto.css";
 
 function EditPhotoForm() {
+  const { id } = useParams();
+  const history = useHistory();
+
+  const photo = Object.values(useSelector((state) => state.photos));
+  const selectPhoto = photo.filter((photo) => {
+    return photo.id === +id;
+  })[0];
+
+  console.log("SELECTPHOTO", selectPhoto);
+
   const dispatch = useDispatch();
-  const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  const [description, setDescription] = useState(selectPhoto?.description);
+  const [imageUrl, setImageUrl] = useState(selectPhoto?.imageUrl);
   const [errorMessages, setErrorMessages] = useState({});
   const [errors, setErrors] = useState([]);
 
-  const { id } = useParams();
-  const history = useHistory();
+
+  useEffect(() => {
+    dispatch(getPhotoDetail(id));
+    // console.log("INSIDE THE USE EFFECT")
+    if (photo) {
+      return;
+    }
+  }, [dispatch, id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,8 +48,8 @@ function EditPhotoForm() {
     });
 
     // if (updatedPhoto) {
-      setErrorMessages({});
-    //   history.push(`/photos/${id}`);
+    setErrorMessages({});
+    //   history.push(`/photos`);
     // }
   };
 
@@ -42,9 +58,11 @@ function EditPhotoForm() {
       <h1 id="edit-photo-title">Edit Photo</h1>
       <form id="edit-photo-form" onSubmit={handleSubmit}>
         <ul>
-          {(errors.length) ? (errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))) : <></>}
+          {errors.length ? (
+            errors.map((error, idx) => <li key={idx}>{error}</li>)
+          ) : (
+            <></>
+          )}
         </ul>
         <label className="edit-photo-label">Title:</label>
         <input
@@ -57,7 +75,6 @@ function EditPhotoForm() {
         <input
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
-          placeholder="Enter a new image URL"
           className="edit-photo-input"
           // required
         />

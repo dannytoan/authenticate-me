@@ -10,7 +10,6 @@ import "./PhotoDetail.css";
 const PhotoDetail = () => {
   const dispatch = useDispatch();
   const params = useParams();
-  const history = useHistory();
   const { id } = params;
 
   const photo = Object.values(useSelector((state) => state.photos));
