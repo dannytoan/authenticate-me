@@ -44,14 +44,13 @@ const PhotoDetail = () => {
         <h1 id="photo-title">{selectPhoto?.description}</h1>
         <img id="selected-photo" className="select-photo" src={selectPhoto?.imageUrl}></img>
         <div id="below-photo-spacer"></div>
-        <form>
+        {/* <form>
 
         <label>Collection: </label>
           <select
             className="input select"
             onChange={(e) => setCollectionId(e.target.value)}
             >
-            {/* <option value={null}>Choose a collection</option> */}
             {collections.map((collection) => (
               <option key={collection.id} value={collection.id}>
                 {collection.title}
@@ -59,7 +58,7 @@ const PhotoDetail = () => {
             ))}
           </select>
           <button>Submit</button>
-            </form>
+            </form> */}
         <div id="photo-detail-button-container">
           <EditPhotoFormModal />
           <a href="/photos">

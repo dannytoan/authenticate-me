@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { editPhotoDetail } from "../../store/photos";
 import { useParams, useHistory } from "react-router-dom";
+import { Modal } from '../../context/Modal';
 import "./EditPhoto.css";
 
 function EditPhotoForm() {

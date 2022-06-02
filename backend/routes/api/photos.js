@@ -46,8 +46,8 @@ router.put("/:id", editPhotoValidators, asyncHandler(async function(req, res) {
     const updatePhoto = await db.Photo.findByPk(req.params.id);
 
     await updatePhoto.update({
-        imageUrl,
-        description
+        description,
+        imageUrl
     });
 
     return res.json(
