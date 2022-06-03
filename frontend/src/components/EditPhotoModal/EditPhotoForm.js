@@ -7,11 +7,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { Modal } from "../../context/Modal";
 import "./EditPhoto.css";
 
-import { useModalContext } from "../../context/Modal"
-
 function EditPhotoForm({setShowModal}) {
-
-  const { showModal, setShowModal } = useModalContext();
 
   const { id } = useParams();
   const history = useHistory();

@@ -25,6 +25,7 @@ const CreateALook = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
 
     const payload = {
       userId: sessionUser.id,
@@ -35,19 +36,19 @@ const CreateALook = () => {
 
     dispatch(createLook(payload)).catch(async (res) => {
       const data = await res.json();
+      console.log("DATA", data)
       if (data && data.errors) setErrors(data.errors);
     });
 
 
-    if (errors.length > 0 && payload) {
+    if (errors.length < 0 && payload) {
       return;
     }
 
-    setErrors([]);
 
-    if (errors.length === 0){
-        history.push(`/photos`);
-    }
+    // if (errors.length === 0){
+    //     history.push(`/photos`);
+    // }
 
   };
 
