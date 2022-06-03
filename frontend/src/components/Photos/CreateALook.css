@@ -63,22 +63,6 @@
   font-weight: 600;
 }
 
-#success-message {
-    font-family: sans-serif;
-  font-weight: 600;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  position: relative;
-  top: 25px;
-}
-
-#here {
-    margin-left: 5px;
-    color: white;
-}
-
 #create-a-look-header {
     font-family: sans-serif;
   font-size: 50px;

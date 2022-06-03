@@ -11,8 +11,6 @@ const CreateALook = () => {
   const [collectionId, setCollectionId] = useState(null);
   const [errors, setErrors] = useState([]);
 
-  const [successMessage, setSuccessMessage] = useState("")
-
   const sessionUser = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
@@ -20,45 +18,9 @@ const CreateALook = () => {
 
   const collections = Object.values(useSelector((state) => state.collections));
 
-  // let successMessage;
-
   useEffect(() => {
     dispatch(getCollections());
   }, [dispatch]);
-
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   // const errors = [];
-  //   setErrors([]);
-
-  //   const payload = {
-  //     userId: sessionUser.id,
-  //     collectionId,
-  //     imageUrl,
-  //     description,
-  //   };
-
-
-  //   dispatch(createLook(payload)).catch(async (res) => {
-  //     const data = await res.json();
-  //     console.log("DATA", data.errors)
-  //     if (data && data.errors) {
-  //       // errors.push(data.errors)
-  //       setErrors(errors)
-  //     };
-  //   });
-
-
-  //   // console.log(errors)
-  //   console.log("ERRORS ARRAY", [errors])
-  //   if (errors.length) {
-  //     return;
-  //   } else {
-  //     setSuccessMessage(<div id="success-message">Look Successfully Uploaded!</div>)
-  //   }
-
-  // };
 
   useEffect(() => {
     const errors = [];
@@ -67,7 +29,7 @@ const CreateALook = () => {
       errors.push("Please provide an Image URL.")
     }
 
-    if (!(imageUrl.endsWith(".jpg" || ".png"))) {
+    if (!(imageUrl.includes(".jpg" || ".png"))) {
       errors.push("Please provide a valid Image URL.")
     }
 
@@ -146,7 +108,6 @@ const CreateALook = () => {
           >
             Submit
           </button>
-          {successMessage}
         </form>
       </div>
     </div>
