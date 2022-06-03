@@ -53,7 +53,7 @@ const CreateALook = () => {
     if (errors.length) {
       return;
     } else {
-      setSuccessMessage(<div>Successfully Uploaded Look! Check it out{<a href="/photos">here:</a>}</div>)
+      setSuccessMessage(<div id="success-message">Look Successfully Uploaded!</div>)
     }
 
     };
@@ -62,6 +62,7 @@ const CreateALook = () => {
   return (
     <div>
       <div id="form-container">
+        <h1 id="create-a-look-header">Create a Look</h1>
         <form id="form" onSubmit={(e) => handleSubmit(e)}>
             <div id="add-a-look-errors">
               <ul>
@@ -70,7 +71,6 @@ const CreateALook = () => {
                 ))}
               </ul>
             </div>
-          {successMessage}
           <label className="add-a-look-labels">Image URL: </label>
           <input
             type="text"
@@ -108,6 +108,7 @@ const CreateALook = () => {
           >
             Submit
           </button>
+          {successMessage}
           {/* </a> */}
         </form>
       </div>
