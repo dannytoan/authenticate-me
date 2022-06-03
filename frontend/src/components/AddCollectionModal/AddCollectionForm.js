@@ -41,8 +41,8 @@ function AddCollectionForm({setShowModal}) {
 
     if (title.length < 1) {
       errors.push("Please provide a title.")
-    } else if (title.length > 32) {
-      errors.push("Title may not exceed over 32 characters.")
+    } else if (title.length > 20) {
+      errors.push("Title may not exceed over 20 characters.")
     }
 
     if (!(coverImg.includes(".jpg" || ".png"))) {
@@ -56,7 +56,7 @@ function AddCollectionForm({setShowModal}) {
     <div id="add-collection-modal-body">
       <h1 id="add-collection-title">ADD A NEW COLLECTION</h1>
       <form onSubmit={handleSubmit}>
-      {errors.includes("Please provide a title." || "Title may not exceed over 32 characters." || "Please provide a valid Image URL.") ? <></> : <ul>
+      {errors.includes("Please provide a title." || "Title may not exceed over 20 characters." || "Please provide a valid Image URL.") ? <></> : <ul>
                 {errors.map((error, idx) => (
                   <li key={idx} className="add-a-look-li">{error}</li>
                 ))}
