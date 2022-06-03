@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Photo.belongsTo(models.User, {foreignKey: "userId"})
     Photo.belongsTo(models.Collection, {foreignKey: "collectionId"})
+    Photo.hasMany(models.Comment, {foreignKey: "photoId", onDelete: "CASCADE", hooks: true})
   };
   return Photo;
 };
