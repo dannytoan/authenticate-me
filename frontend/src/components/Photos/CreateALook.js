@@ -11,12 +11,16 @@ const CreateALook = () => {
   const [collectionId, setCollectionId] = useState(null);
   const [errors, setErrors] = useState([]);
 
+  const [successMessage, setSuccessMessage] = useState("")
+
   const sessionUser = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   const collections = Object.values(useSelector((state) => state.collections));
+
+  // let successMessage;
 
   useEffect(() => {
     dispatch(getCollections());
@@ -25,6 +29,7 @@ const CreateALook = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const errors = [];
     setErrors([]);
 
     const payload = {
@@ -37,25 +42,22 @@ const CreateALook = () => {
 
     dispatch(createLook(payload)).catch(async (res) => {
       const data = await res.json();
-      console.log("DATA", data)
+      console.log("DATA", data.errors)
       if (data && data.errors) {
-        setErrors(data.errors)
-        return;
-      } else {
-        history.push(`/photos`)
+        errors.push(data.errors)
+        setErrors(errors)
       };
     });
 
-    console.log(errors)
-    // if (errors.length > 0 && payload) {
-    //   return;
-    // }
 
-    // else if (errors.length === 0){
-    //     history.push(`/photos`);
-    // }
+    if (errors.length) {
+      return;
+    } else {
+      setSuccessMessage(<div>Successfully Uploaded Look! Check it out{<a href="/photos">here:</a>}</div>)
+    }
 
-  };
+    };
+    // console.log("ERRORS ARRAY", errors)
 
   return (
     <div>
@@ -68,6 +70,7 @@ const CreateALook = () => {
                 ))}
               </ul>
             </div>
+          {successMessage}
           <label className="add-a-look-labels">Image URL: </label>
           <input
             type="text"
@@ -101,6 +104,7 @@ const CreateALook = () => {
           {/* <a href="/photos"> */}
           <button
             className="submit"
+            onClick={(e) => handleSubmit(e)}
           >
             Submit
           </button>
