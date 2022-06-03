@@ -34,10 +34,10 @@
 #video-text-container {
     width: 630px;
     height: 350px;
-    background-color: #0000005c;
+    /* background-color: #0000005c; */
     z-index: 10;
     position: absolute;
-  bottom: 190px;
+    bottom: 190px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,12 +49,43 @@
     font-family: sans-serif;
     font-size: 50px;
     position: relative;
-    top: 94px;
+    top: 70px;
 }
 
 #video-signup-button {
+    padding: 15px 150px;
+    border: none;
+    background: black;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#demo-user-container {
+    border: none;
     position: relative;
-    top: 140px;
+    top: 10px;
+}
+
+#demo-user-btn {
+    padding: 15px 160px;
+    border: none;
+    background: black;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#demo-user-btns {
+    position: relative;
+    top: 100px;
+}
+
+#browse-looks-button {
     padding: 15px 150px;
     border: none;
     background: black;
