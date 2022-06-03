@@ -4,6 +4,7 @@ import './Modal.css';
 // import './EditPhotoModal.css'
 
 const ModalContext = React.createContext();
+export const useModalContext = () => useContext(ModalContext)
 
 export function ModalProvider({ children }) {
   const modalRef = useRef();

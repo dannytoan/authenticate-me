@@ -6,7 +6,6 @@ import { getCollections } from "../../store/collections";
 import "./CreateALook.css";
 
 const CreateALook = () => {
-  const [errorMessages, setErrorMessages] = useState({});
   const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
   const [collectionId, setCollectionId] = useState(null);
@@ -23,8 +22,10 @@ const CreateALook = () => {
     dispatch(getCollections());
   }, [dispatch]);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors([]);
 
     const payload = {
       userId: sessionUser.id,
@@ -35,27 +36,34 @@ const CreateALook = () => {
 
     dispatch(createLook(payload)).catch(async (res) => {
       const data = await res.json();
+      console.log("DATA", data)
       if (data && data.errors) setErrors(data.errors);
     });
 
-    if (errors.length === 0) {
-      history.push(`/photos/`);
-      setErrorMessages({});
+
+    if (errors.length < 0 && payload) {
+      return;
     }
+
+
+    // if (errors.length === 0){
+    //     history.push(`/photos`);
+    // }
+
   };
 
   return (
     <div>
-      <div>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-      </div>
       <div id="form-container">
-        <form id="form" onSubmit={handleSubmit}>
-          <label>Image URL: </label>
+        <form id="form" onSubmit={(e) => handleSubmit(e)}>
+            <div id="add-a-look-errors">
+              <ul>
+                {errors.map((error, idx) => (
+                  <li key={idx} className="add-a-look-li">{error}</li>
+                ))}
+              </ul>
+            </div>
+          <label className="add-a-look-labels">Image URL: </label>
           <input
             type="text"
             placeholder="Insert image URL here..."
@@ -63,8 +71,8 @@ const CreateALook = () => {
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             className="input"
-          />
-          <label>Title: </label>
+            />
+          <label className="add-a-look-labels">Title: </label>
           <input
             type="text"
             placeholder="Insert title here..."
@@ -73,12 +81,12 @@ const CreateALook = () => {
             onChange={(e) => setDescription(e.target.value)}
             className="input"
           />
-          <label>Collection: </label>
+          <label className="add-a-look-labels">Collection: </label>
           <select
             className="input select"
             onChange={(e) => setCollectionId(e.target.value)}
           >
-            <option value={null}>Choose a collection</option>
+            <option value={null} >Choose a collection</option>
             {collections.map((collection) => (
               <option key={collection.id} value={collection.id}>
                 {collection.title}
@@ -88,8 +96,6 @@ const CreateALook = () => {
           {/* <a href="/photos"> */}
           <button
             className="submit"
-            // disabled={errors.length > 0}
-            // href="/photos"
           >
             Submit
           </button>

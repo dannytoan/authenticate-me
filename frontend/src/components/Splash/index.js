@@ -33,7 +33,7 @@ function Splash() {
           </video> : <video className="mid-header-video" autoPlay playsInline muted loop>
             <source
             type="video/mp4"
-            src="https://res.cloudinary.com/matchaprince/video/upload/v1654191440/final_6298f521360d2e00d54e7b11_136868_po9vh7.mp4"
+            src="https://res.cloudinary.com/matchaprince/video/upload/v1654204077/final_6298f521360d2e00d54e7b11_531959_m00i0z.mp4"
             />
             </video>}
           <div id="video-text-container">

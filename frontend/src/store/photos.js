@@ -11,7 +11,7 @@ const load = (gallery) => ({
 });
 
 const addOneLook = (look) => {
-  console.log("===== HIT POJO ACTION =====");
+  // console.log("===== HIT POJO ACTION =====");
   return {
     type: ADD_LOOK,
     look,
@@ -67,14 +67,14 @@ export const getPhotoDetail = (id) => async (dispatch) => {
 
 export const editPhotoDetail = (id, payload) => async (dispatch) => {
 
-  console.log("===INSIDE BEFORE RES IN EDIT PHOTO DETAIL THUNK===")
+  // console.log("===INSIDE BEFORE RES IN EDIT PHOTO DETAIL THUNK===")
 
   const res = await csrfFetch(`/api/photos/${id}`, {
     method: 'PUT',
     // headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   })
-  console.log(res, "RES ===INSIDE EDIT PHOTO DETAIL THUNK===")
+  // console.log(res, "RES ===INSIDE EDIT PHOTO DETAIL THUNK===")
 
   const look = await res.json();
 
