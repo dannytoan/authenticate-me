@@ -35,8 +35,8 @@ const CreateALook = () => {
 
     if (description.length < 1) {
       errors.push("Please provide a title.")
-    } else if (description.length < 1 || description.length > 256) {
-      errors.push("Title must contain at least 1 and no more than 256 characters.")
+    } else if (description.length < 1 || description.length > 32) {
+      errors.push("Title must contain at least 1 and no more than 32 characters.")
     }
 
     setErrors(errors);

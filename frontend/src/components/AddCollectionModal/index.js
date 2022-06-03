@@ -10,7 +10,7 @@ function AddCollectionFormModal() {
       <button id="add-collection-click-btn" onClick={() => setShowModal(true)}>Add Collection</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <AddCollectionForm />
+          <AddCollectionForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

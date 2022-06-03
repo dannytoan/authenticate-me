@@ -9,6 +9,8 @@ export default function Photos() {
   });
 
   // console.log(photos)
+  const numCount = "123131313123122123221322132313113";
+  console.log("NUM COUNT", numCount.length)
 
   const dispatch = useDispatch();
 

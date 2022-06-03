@@ -5,7 +5,7 @@ import { createCollection } from "../../store/collections";
 import { useParams, useHistory } from "react-router-dom";
 import "./AddCollection.css";
 
-function AddCollectionForm() {
+function AddCollectionForm({setShowModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [coverImg, setCoverImg] = useState("");
@@ -24,12 +24,18 @@ function AddCollectionForm() {
       coverImg,
     };
 
-    dispatch(createCollection(payload)).catch(async (res) => {
+    const newCollection = dispatch(createCollection(payload));
+
+    newCollection.catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
 
     setErrorMessages({});
+
+    if (newCollection) {
+      setShowModal(false)
+    }
   };
 
   return (
