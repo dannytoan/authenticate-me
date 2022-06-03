@@ -10,7 +10,7 @@ function AddCollectionForm({setShowModal}) {
   const [title, setTitle] = useState("");
   const [coverImg, setCoverImg] = useState("");
 
-  const [errorMessages, setErrorMessages] = useState({});
+  // const [errorMessages, setErrorMessages] = useState({});
   const [errors, setErrors] = useState([]);
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -26,29 +26,39 @@ function AddCollectionForm({setShowModal}) {
 
     const newCollection = dispatch(createCollection(payload));
 
-    newCollection.catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
-
-    setErrorMessages({});
+    // newCollection.catch(async (res) => {
+    //   const data = await res.json();
+    //   if (data && data.errors) setErrors(data.errors);
+    // });
 
     if (newCollection) {
       setShowModal(false)
     }
   };
 
+  useEffect(() => {
+    const errors = [];
+
+    if (title.length < 1 || title.length > 32) {
+      errors.push("Title must be at least 1 and not exceed 32 characters.")
+    }
+
+    if (!(coverImg.includes(".jpg" || ".png"))) {
+      errors.push("Please provide a valid Image URL.")
+    }
+
+    setErrors(errors);
+  }, [title, coverImg]);
+
   return (
     <div id="add-collection-modal-body">
       <h1 id="add-collection-title">ADD A NEW COLLECTION</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.length ? (
-            errors.map((error, idx) => <li key={idx}>{error}</li>)
-          ) : (
-            <></>
-          )}
-        </ul>
+      {errors.includes("Title must be at least 1 and not exceed 32 characters." || "Please provide a valid Image URL.") ? <></> : <ul>
+                {errors.map((error, idx) => (
+                  <li key={idx} className="add-a-look-li">{error}</li>
+                ))}
+              </ul>}
         <label>Name your collection:</label>
         <input
           type="text"
@@ -65,7 +75,10 @@ function AddCollectionForm({setShowModal}) {
           placeholder="Insert Image URL"
           required
         />
-        <button id="submit-new-collection">Submit</button>
+        <button
+        id="submit-new-collection"
+        disabled={(errors.length > 0)}
+        >Submit</button>
       </form>
     </div>
   );
