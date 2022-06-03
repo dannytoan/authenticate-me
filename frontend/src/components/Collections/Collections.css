@@ -28,6 +28,10 @@
     width: 50%;
     border: #00000012 10px solid;
     cursor: pointer;
+    min-width: 286px;
+    max-width: 286px;
+    min-height: 286px;
+    max-height: 286px;
 }
 
 #anchor {

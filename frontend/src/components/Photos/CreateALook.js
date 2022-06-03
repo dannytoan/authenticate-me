@@ -35,8 +35,8 @@ const CreateALook = () => {
 
     if (description.length < 1) {
       errors.push("Please provide a title.")
-    } else if (description.length < 1 || description.length > 256) {
-      errors.push("Title must contain at least 1 and no more than 256 characters.")
+    } else if (description.length < 1 || description.length > 32) {
+      errors.push("Title must contain at least 1 and no more than 32 characters.")
     }
 
     setErrors(errors);
@@ -66,7 +66,7 @@ const CreateALook = () => {
         <h1 id="create-a-look-header">Create a Look</h1>
         <form id="form" onSubmit={(e) => handleSubmit(e)}>
             <div id="add-a-look-errors">
-              {errors.includes("Please provide an Image URL." || "Please provide a title." || "Please provide a valid Image URL." || "Title must contain at least 1 and no more than 256 characters.") ? <></> : <ul>
+              {errors.includes("Please provide an Image URL." || "Please provide a title." || "Please provide a valid Image URL." || "Title must contain at least 1 and no more than 32 characters.") ? <></> : <ul>
                 {errors.map((error, idx) => (
                   <li key={idx} className="add-a-look-li">{error}</li>
                 ))}

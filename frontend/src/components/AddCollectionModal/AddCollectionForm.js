@@ -5,12 +5,12 @@ import { createCollection } from "../../store/collections";
 import { useParams, useHistory } from "react-router-dom";
 import "./AddCollection.css";
 
-function AddCollectionForm() {
+function AddCollectionForm({setShowModal}) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [coverImg, setCoverImg] = useState("");
 
-  const [errorMessages, setErrorMessages] = useState({});
+  // const [errorMessages, setErrorMessages] = useState({});
   const [errors, setErrors] = useState([]);
 
   const sessionUser = useSelector((state) => state.session.user);
@@ -24,25 +24,43 @@ function AddCollectionForm() {
       coverImg,
     };
 
-    dispatch(createCollection(payload)).catch(async (res) => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
+    const newCollection = dispatch(createCollection(payload));
 
-    setErrorMessages({});
+    // newCollection.catch(async (res) => {
+    //   const data = await res.json();
+    //   if (data && data.errors) setErrors(data.errors);
+    // });
+
+    if (newCollection) {
+      setShowModal(false)
+    }
   };
+
+  useEffect(() => {
+    const errors = [];
+
+    if (title.length < 1) {
+      errors.push("Please provide a title.")
+    } else if (title.length > 32) {
+      errors.push("Title may not exceed over 32 characters.")
+    }
+
+    if (!(coverImg.includes(".jpg" || ".png"))) {
+      errors.push("Please provide a valid Image URL.")
+    }
+
+    setErrors(errors);
+  }, [title, coverImg]);
 
   return (
     <div id="add-collection-modal-body">
       <h1 id="add-collection-title">ADD A NEW COLLECTION</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.length ? (
-            errors.map((error, idx) => <li key={idx}>{error}</li>)
-          ) : (
-            <></>
-          )}
-        </ul>
+      {errors.includes("Please provide a title." || "Title may not exceed over 32 characters." || "Please provide a valid Image URL.") ? <></> : <ul>
+                {errors.map((error, idx) => (
+                  <li key={idx} className="add-a-look-li">{error}</li>
+                ))}
+              </ul>}
         <label>Name your collection:</label>
         <input
           type="text"
@@ -59,7 +77,10 @@ function AddCollectionForm() {
           placeholder="Insert Image URL"
           required
         />
-        <button id="submit-new-collection">Submit</button>
+        <button
+        id="submit-new-collection"
+        disabled={(errors.length > 0)}
+        >Submit</button>
       </form>
     </div>
   );
