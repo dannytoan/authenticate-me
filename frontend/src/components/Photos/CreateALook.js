@@ -35,20 +35,23 @@ const CreateALook = () => {
     };
 
 
-
     dispatch(createLook(payload)).catch(async (res) => {
       const data = await res.json();
       console.log("DATA", data)
-      if (data && data.errors) setErrors(data.errors);
+      if (data && data.errors) {
+        setErrors(data.errors)
+        return;
+      } else {
+        history.push(`/photos`)
+      };
     });
 
+    console.log(errors)
+    // if (errors.length > 0 && payload) {
+    //   return;
+    // }
 
-    if (errors.length < 0 && payload) {
-      return;
-    }
-
-
-    // if (errors.length === 0){
+    // else if (errors.length === 0){
     //     history.push(`/photos`);
     // }
 
