@@ -2,7 +2,7 @@
     background-color: aliceblue;
     display: flex;
     flex-direction: column;
-    height: 500px;
+    height: 800px;
     align-items: center;
     justify-content: space-evenly;
 }
@@ -45,11 +45,11 @@
 
 #add-a-look-errors {
     display: flex;
-    position: relative;
+    position: absolute;
     flex-direction: row;
     justify-content: flex-end;
-    left: 264px;
-    bottom: -52px;
+    right: 405px;
+    bottom: 495px;
 }
 
 .add-a-look-li {
@@ -65,14 +65,13 @@
 
 #success-message {
     font-family: sans-serif;
-    background: black;
-    color: white;
-    font-weight: 600;
-    font-size: 20px;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  position: relative;
+  top: 25px;
 }
 
 #here {

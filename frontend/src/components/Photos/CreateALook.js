@@ -29,7 +29,7 @@ const CreateALook = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const errors = [];
+    // const errors = [];
     setErrors([]);
 
     const payload = {
@@ -49,7 +49,7 @@ const CreateALook = () => {
       };
     });
 
-
+    // console.log(errors)
     if (errors.length) {
       return;
     } else {
@@ -57,7 +57,7 @@ const CreateALook = () => {
     }
 
     };
-    // console.log("ERRORS ARRAY", errors)
+    console.log("ERRORS ARRAY", errors)
 
   return (
     <div>
