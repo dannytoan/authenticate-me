@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getPhotoDetail, deleteLook } from "../../store/photos";
 import { getCollections } from "../../store/collections";
+import { getComments } from "../../store/comments";
 import EditPhotoFormModal from "../EditPhotoModal";
+import Comments from "./Comments";
 
 import "./PhotoDetail.css";
 
@@ -18,16 +20,15 @@ const PhotoDetail = () => {
   })[0];
 
   const collections = Object.values(useSelector((state) => state.collections));
-
-
   const [collectionId, setCollectionId] = useState(null);
 
-//   console.log("PHOTO", photo);
-//   console.log("SELECT PHOTO", selectPhoto?.imageUrl);
+  // const comments = useSelector((state) => state.comments);
+  // console.log("COMMENTS", comments);
+  //   console.log("PHOTO", photo);
+  //   console.log("SELECT PHOTO", selectPhoto?.imageUrl);
 
   useEffect(() => {
     dispatch(getPhotoDetail(id));
-    // console.log("INSIDE THE USE EFFECT")
     if (photo) {
       return;
     }
@@ -37,11 +38,23 @@ const PhotoDetail = () => {
     dispatch(getCollections());
   }, [dispatch]);
 
+  // useEffect(() => {
+  //   dispatch(getComments(id));
+  //   console.log("INSIDE THE USE EFFECT")
+  //   if (comments) {
+  //     return;
+  //   }
+  // }, [dispatch, id]);
+
   return (
     <div>
       <div id="photo-detail-container">
         <h1 id="photo-title">{selectPhoto?.description}</h1>
-        <img id="selected-photo" className="select-photo" src={selectPhoto?.imageUrl}></img>
+        <img
+          id="selected-photo"
+          className="select-photo"
+          src={selectPhoto?.imageUrl}
+        ></img>
         <div id="below-photo-spacer"></div>
         {/* <form>
 
@@ -61,9 +74,15 @@ const PhotoDetail = () => {
         <div id="photo-detail-button-container">
           <EditPhotoFormModal />
           <a href="/photos">
-          <button className="photo-detail-btn" onClick={() => dispatch(deleteLook(id))}>Delete</button>
+            <button
+              className="photo-detail-btn"
+              onClick={() => dispatch(deleteLook(id))}
+            >
+              Delete
+            </button>
           </a>
         </div>
+        < Comments selectPhoto={selectPhoto}/>
         <div id="below-photo-spacer"></div>
       </div>
     </div>

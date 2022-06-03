@@ -7,6 +7,7 @@ const { User } = require('../../db/models');
 const photosRouter = require('./photos')
 const addLookRouter = require('./addLook')
 const collectionsRouter = require('./collections')
+const commentsRouter = require('./comments')
 
 
 router.use('/session', sessionRouter);
@@ -18,6 +19,9 @@ router.use('/photos', photosRouter);
 router.use('/photos/new', addLookRouter);
 
 router.use('/collections', collectionsRouter);
+
+router.use('/comments', commentsRouter)
+
 
 
 

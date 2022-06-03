@@ -107,8 +107,8 @@ const photosReducer = (state = {}, action) => {
         normalizedPhotos[photo.id] = photo;
       });
       return {
-        ...normalizedPhotos,
         ...state,
+        ...normalizedPhotos,
       };
     case ADD_LOOK:
       const newState = {...state, [action.look.id]: action.look };
