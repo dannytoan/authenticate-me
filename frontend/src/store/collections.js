@@ -73,6 +73,20 @@ export const deleteSelectedCollection = (id) => async (dispatch) => {
   return response;
 };
 
+export const editSelectedCollection = (id, payload) => async (dispatch) => {
+  const res = await csrfFetch(`/api/collections/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(payload)
+  })
+
+  const collection = await res.json();
+
+  if (collection) {
+    dispatch(addCollection(collection))
+  }
+
+}
+
 // REDUCER
 const collectionsReducer = (state = {}, action) => {
   switch (action.type) {

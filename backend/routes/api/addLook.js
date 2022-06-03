@@ -11,34 +11,29 @@ const router = express.Router();
 
 
 // VALIDATE SUBMITTING A PHOTO
-const validatePostPhoto = [
-  check("imageUrl")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide an Image URL.")
-    .isURL({ checkFalsy: true })
-    .withMessage("Please provide a valid Image URL."),
-  check("description")
-    .exists({ checkFalsy: true })
-    .withMessage("Please provide a title.")
-    .isLength({ min: 1, max: 256 })
-    .withMessage(
-      "Title must contain at least 1 and no more than 256 characters."
-    ),
+// const validatePostPhoto = [
+//   check("imageUrl")
+//     .exists({ checkFalsy: true })
+//     .withMessage("Please provide an Image URL.")
+//     .isURL({ checkFalsy: true })
+//     .withMessage("Please provide a valid Image URL."),
+//   check("description")
+//     .exists({ checkFalsy: true })
+//     .withMessage("Please provide a title.")
+//     .isLength({ min: 1, max: 256 })
+//     .withMessage(
+//       "Title must contain at least 1 and no more than 256 characters."
+//     ),
 
-  handleValidationErrors,
-];
+//   handleValidationErrors,
+// ];
 
 router.post(
   "/",
-  validatePostPhoto, requireAuth,
   asyncHandler(async function (req, res) {
-    const photo = await db.Photo.build(req.body);
+    const photo = await db.Photo.create(req.body);
 
-    await photo.save();
-
-    if (photo) {
       return res.json(photo);
-    }
   })
 );
 

@@ -11,8 +11,6 @@ const CreateALook = () => {
   const [collectionId, setCollectionId] = useState(null);
   const [errors, setErrors] = useState([]);
 
-  const [successMessage, setSuccessMessage] = useState("")
-
   const sessionUser = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
@@ -20,44 +18,47 @@ const CreateALook = () => {
 
   const collections = Object.values(useSelector((state) => state.collections));
 
-  // let successMessage;
-
   useEffect(() => {
     dispatch(getCollections());
   }, [dispatch]);
 
+  useEffect(() => {
+    const errors = [];
+
+    if (imageUrl.length < 1) {
+      errors.push("Please provide an Image URL.")
+    }
+
+    if (!(imageUrl.includes(".jpg" || ".png"))) {
+      errors.push("Please provide a valid Image URL.")
+    }
+
+    if (description.length < 1) {
+      errors.push("Please provide a title.")
+    } else if (description.length < 1 || description.length > 256) {
+      errors.push("Title must contain at least 1 and no more than 256 characters.")
+    }
+
+    setErrors(errors);
+  }, [imageUrl, description])
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const errors = [];
-    setErrors([]);
 
     const payload = {
       userId: sessionUser.id,
       collectionId,
       imageUrl,
       description,
-    };
-
-
-    dispatch(createLook(payload)).catch(async (res) => {
-      const data = await res.json();
-      console.log("DATA", data.errors)
-      if (data && data.errors) {
-        errors.push(data.errors)
-        setErrors(errors)
-      };
-    });
-
-
-    if (errors.length) {
-      return;
-    } else {
-      setSuccessMessage(<div id="success-message">Look Successfully Uploaded!</div>)
     }
 
-    };
-    // console.log("ERRORS ARRAY", errors)
+    dispatch(createLook(payload))
+
+    history.push("/photos")
+  }
+
+
 
   return (
     <div>
@@ -65,11 +66,11 @@ const CreateALook = () => {
         <h1 id="create-a-look-header">Create a Look</h1>
         <form id="form" onSubmit={(e) => handleSubmit(e)}>
             <div id="add-a-look-errors">
-              <ul>
+              {errors.includes("Please provide an Image URL." || "Please provide a title." || "Please provide a valid Image URL." || "Title must contain at least 1 and no more than 256 characters.") ? <></> : <ul>
                 {errors.map((error, idx) => (
                   <li key={idx} className="add-a-look-li">{error}</li>
                 ))}
-              </ul>
+              </ul>}
             </div>
           <label className="add-a-look-labels">Image URL: </label>
           <input
@@ -101,15 +102,12 @@ const CreateALook = () => {
               </option>
             ))}
           </select>
-          {/* <a href="/photos"> */}
           <button
             className="submit"
-            onClick={(e) => handleSubmit(e)}
+            disabled={(errors.length > 0)}
           >
             Submit
           </button>
-          {successMessage}
-          {/* </a> */}
         </form>
       </div>
     </div>

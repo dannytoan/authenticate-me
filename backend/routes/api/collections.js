@@ -52,4 +52,17 @@ router.delete(
 })
 );
 
+router.put("/:id", asyncHandler(async function (req, res) {
+  const { title } = req.body;
+  const updateCollection = await db.Collection.findByPk(req.params.id);
+
+  await updateCollection.update({
+    title
+  });
+
+  return res.json(
+    updateCollection
+  )
+}));
+
 module.exports = router;
