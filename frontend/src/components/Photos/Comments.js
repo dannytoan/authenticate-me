@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getComments } from "../../store/comments";
-import PhotoDetail from "./PhotoDetail";
+import "./Comments.css"
 
 const Comments = ({ selectPhoto }) => {
   const dispatch = useDispatch();
@@ -31,14 +31,14 @@ const Comments = ({ selectPhoto }) => {
     <div>
       <table id="comments-table">
         <thead>
-          <tr>
-            <th>Comments</th>
+          <tr >
+            <th id="comments-th">Comments</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody >
           {selectPhotoComments.map((comments) => (
-            <tr key={comments.id}>
-                <td>{comments.comment}</td>
+            <tr  key={comments.id}>
+                <td id="comments-td">{comments.comment}</td>
                 </tr>
           ))}
         </tbody>
