@@ -43,16 +43,16 @@ function EditPhotoForm({setShowModal}) {
       collectionId
     };
 
-    // let updatedPhoto = dispatch(editPhotoDetail(id, payload));
+    let updatedPhoto = dispatch(editPhotoDetail(id, payload));
 
     dispatch(editPhotoDetail(id, payload)).catch(async (res) => {
       const data = await res.json();
       if (data && data.errors) setErrors(data.errors);
     });
 
-    // if (updatedPhoto) {
-    //   setShowModal(false)
-    // }
+    if (updatedPhoto) {
+      setShowModal(false)
+    }
   };
 
   return (

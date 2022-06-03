@@ -10,7 +10,7 @@ function EditPhotoFormModal() {
       <button className="photo-detail-btn" onClick={() => setShowModal(true)}>Edit</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <EditPhotoForm />
+          <EditPhotoForm setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
