@@ -74,11 +74,12 @@
 }
 
 #masthead-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 5px;
     position: relative;
-  margin-bottom: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+    bottom: 115px;
 }
 
 .auth-btn {
