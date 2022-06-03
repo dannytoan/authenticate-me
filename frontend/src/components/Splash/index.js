@@ -1,21 +1,18 @@
 import "./Splash.css";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import * as sessionActions from "../../store/session"
+import { useHistory } from "react-router-dom";
 
 function Splash() {
   const sessionUser = useSelector((state) => state.session.user);
-  // let sessionLinks;
-//   if (sessionUser) {
-//     sessionLinks = (<a href="/signup">
-//     <button id="video-signup-button">Start for Free</button>
-//   </a>)
-//   } else {
-//     sessionLinks = (
-// <a href="/photos">
-//               <button id="video-signup-button">Browse Looks</button>
-//             </a>
-//     )
-//   }
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleDemoSubmit = (e) => {
+    const credential = "demo@user.io";
+    const password = "password"
+    return dispatch(sessionActions.login({ credential, password })).then(()=> history.push('/'))
+  }
 
   return (
     <div id="splash-body">
@@ -47,6 +44,10 @@ function Splash() {
           </div>
         </div>
       </div>
+          {(!sessionUser) ? <form onSubmit={handleDemoSubmit}>
+            <button>Demo User</button>
+          </form> : <></>}
+
     </div>
   );
 }
