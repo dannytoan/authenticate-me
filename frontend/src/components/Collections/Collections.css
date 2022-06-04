@@ -7,7 +7,7 @@
 #collections-title {
     font-family: sans-serif;
     font-size: 50px;
-    margin: 25px 0 -5px;
+    margin: 25px 0 10px;
 }
 
 #collections-li {
@@ -26,12 +26,12 @@
 
 #collection-cover-img {
     width: 50%;
-    border: #00000012 10px solid;
-    cursor: pointer;
-    min-width: 286px;
-    max-width: 286px;
-    min-height: 286px;
-    max-height: 286px;
+  cursor: pointer;
+  min-width: 286px;
+  max-width: 286px;
+  min-height: 286px;
+  max-height: 286px;
+  margin: 0 30px;
 }
 
 #anchor {
@@ -41,15 +41,19 @@
 }
 
 #add-collection-btn {
-    display: flex;
-    height: 276px;
-    width: 276px;
-    align-items: center;
-    justify-content: center;
-    border: 5px solid black;
-    font-size: 100px;
-    font-weight: 600;
+    border: none;
+    padding: 10px 79px;
+    font-family: sans-serif;
     cursor: pointer;
+    z-index: 1;
+    font-weight: 600;
+    font-size: 18px;
+    background: black;
+    color: white;
+    z-index: 0;
+    margin-bottom: 50px;
+    position: relative;
+    bottom: 50px;
 }
 
 #collections-container {
@@ -76,5 +80,5 @@
     color: white;
     margin: 15px;
     z-index: 0;
-    margin-bottom: 50px;
+    margin-bottom: 80px;
 }
