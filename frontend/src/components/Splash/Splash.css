@@ -1,5 +1,8 @@
 #root {
     min-height: fit-content;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    min-width: 1080px;
 }
 
 #splash-body {
