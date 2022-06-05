@@ -4,9 +4,11 @@ import { useParams, useHistory } from "react-router-dom";
 import {
   getCollectionDetail,
   deleteSelectedCollection,
+  editSelectedCollection,
 } from "../../store/collections";
 import { getPhotos } from "../../store/photos";
 import "./CollectionDetail.css";
+import EditCollectionFormModal from "../EditCollectionModal";
 
 const CollectionDetail = () => {
   const dispatch = useDispatch();
@@ -39,11 +41,17 @@ const CollectionDetail = () => {
 
   return (
     <div id="collection-detail-body">
-      <a href="/collections">
-        <button className="ud-btns" onClick={() => dispatch(deleteSelectedCollection(id))}>
-          Delete
-        </button>
-      </a>
+      <div id="collection-detail-UD-btns">
+        <a href="/collections">
+          <button
+            className="ud-btns"
+            onClick={() => dispatch(deleteSelectedCollection(id))}
+          >
+            Delete
+          </button>
+        </a>
+        <EditCollectionFormModal />
+      </div>
       <h1 id="collection-title">{selectCollection?.title}</h1>
       {/* <button>Edit</button> */}
       <div id="imgs-container">

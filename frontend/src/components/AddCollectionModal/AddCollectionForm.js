@@ -55,22 +55,24 @@ function AddCollectionForm({setShowModal}) {
   return (
     <div id="add-collection-modal-body">
       <h1 id="add-collection-title">ADD A NEW COLLECTION</h1>
-      <form onSubmit={handleSubmit}>
+      <form id="add-collection-form" onSubmit={handleSubmit}>
       {errors.includes("Please provide a title." || "Title may not exceed over 20 characters." || "Please provide a valid Image URL.") ? <></> : <ul>
                 {errors.map((error, idx) => (
                   <li key={idx} className="add-a-look-li">{error}</li>
                 ))}
               </ul>}
-        <label>Name your collection:</label>
+        <label className="add-collection-form-labels">Name your collection:</label>
         <input
+          className="add-collection-form-input"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Enter collection name"
           required
         />
-        <label>Cover Image URL:</label>
+        <label className="add-collection-form-labels">Cover Image URL:</label>
         <input
+        className="add-collection-form-input"
           type="text"
           value={coverImg}
           onChange={(e) => setCoverImg(e.target.value)}

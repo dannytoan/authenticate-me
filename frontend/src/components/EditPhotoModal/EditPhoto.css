@@ -11,10 +11,12 @@
 
 #edit-photo-form {
     display: flex;
-    height: 250px;
+    height: 350px;
     width: 500px;
     flex-direction: column;
-    top: 30px;
+    bottom: 10px;
+    position: relative;
+
 }
 
 .edit-photo-input {
@@ -40,5 +42,12 @@
 
 #edit-photo-title {
     font-family: sans-serif;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
+
+select.select-collection-editphoto {
+    height: 45px;
+    padding-left: 10px;
+    color: gray;
+    margin: 10px 0 15px;
+  }

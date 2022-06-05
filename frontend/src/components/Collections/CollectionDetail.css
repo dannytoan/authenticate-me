@@ -52,3 +52,18 @@ a {
   position: absolute;
   right: -28px;
 }
+
+#edit-collection-click-btn {
+    border: none;
+    padding: 10px 20px;
+    font-family: sans-serif;
+    cursor: pointer;
+    z-index: 1;
+    font-weight: 600;
+    font-size: 18px;
+    background: black;
+    color: white;
+    margin: 5px 33px;
+    position: absolute;
+    right: 85px;
+}
