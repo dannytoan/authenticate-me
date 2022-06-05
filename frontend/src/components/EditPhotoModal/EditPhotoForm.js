@@ -80,9 +80,9 @@ function EditPhotoForm({setShowModal}) {
           className="edit-photo-input"
           // required
         />
-        <label>Collection: </label>
+        <label className="edit-photo-label">Collection: </label>
           <select
-            className="input select"
+            className="select-collection-editphoto"
             onChange={(e) => setCollectionId(e.target.value)}
             >
               <option value={null}>No Collection Selected</option>
