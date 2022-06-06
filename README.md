@@ -29,6 +29,33 @@ In this web application, users are able to upload their own images of "Looks" to
 ***
 Database design planning was crucial in prior steps to starting this project.
 - Understanding the associations between the necessary tables was required to making this application intuitive and functional.
+
+## Demonstration
+***
+Welcome page as an unauthorized user:
+![welcome](frontend/public/welcome-screen-logged-out.PNG)
+
+Welcome page as an authorized & logged in user:
+![logged-in](frontend/public/welcome-screen-logged-in.PNG)
+
+"Looks" page displaying all of the images in the database:
+![looks-page](frontend/public/looks-page.PNG)
+
+Photo detail page:
+![look-detail](frontend/public/look-detail.PNG)
+
+Upload a photo page:
+![upload-photo-page](frontend/public/create-a-look.PNG)
+
+Collections/album page:
+![collections-page](frontend/public/collections-page.PNG)
+
+Adding a new collection:
+![new-collection-modal](frontend/public/add-collection-modal.PNG)
+
+Collection detail page:
+![collection-detail](frontend/public/collection-detail.PNG)
+
 ## Technolgies Used
 ***
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
