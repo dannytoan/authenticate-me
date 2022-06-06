@@ -45,4 +45,5 @@ button#new-title-submit {
     position: relative;
     bottom: 18px;
     width: 99.5%;
+    cursor: pointer;
 }
