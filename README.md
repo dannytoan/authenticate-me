@@ -53,7 +53,9 @@ Collections/album page:
 Adding a new collection:
 ![new-collection-modal](frontend/public/add-collection-modal.PNG)
 
-Collection detail page:
+Collection detail page
+
+(Note: deleting a collection will delete all photos inside the selected collection from the database. Reassign the photos to none/a different collection if you would like to keep them in the database):
 ![collection-detail](frontend/public/collection-detail.PNG)
 
 ## Technolgies Used
