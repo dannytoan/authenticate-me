@@ -17,6 +17,12 @@ div#nav-cntr {
     width: 6rem;
   }
 
+  button#upload-photo-nav-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
   .navbar-icons {
     font-size: 2rem;
     color: white;
