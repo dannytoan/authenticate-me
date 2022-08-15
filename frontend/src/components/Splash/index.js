@@ -1,10 +1,11 @@
 import "./Splash.css";
-import { useSelector, useDispatch } from "react-redux";
-import * as sessionActions from "../../store/session";
+import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import LoginFormModal from "../LoginFormModal";
+import * as sessionActions from "../../store/session";
 
 function Splash() {
-  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -12,60 +13,43 @@ function Splash() {
     const credential = "demo@user.io";
     const password = "password";
     return dispatch(sessionActions.login({ credential, password })).then(() =>
-      history.push("/")
+      history.push("/photos")
     );
   };
 
   return (
-    <div id="splash-body">
-      <div>
-        <div id="mid-header-container">
-          {/* <img
-            id="mid-header-photo"
-            src="https://images.lifestyleasia.com/wp-content/uploads/sites/6/2020/10/06075646/balmain-header-Cropped.jpg"
-          /> */}
-          {!sessionUser ? (
-            <video className="mid-header-video" autoPlay playsInline muted loop>
-              <source
-                type="video/mp4"
-                src="https://res.cloudinary.com/www-eliesaab-com/video/upload/c_scale,h_1200,q_auto:good/v1644226949/HC_SS22_Banner_video_1_z56lug.mp4"
-              />
-            </video>
-          ) : (
-            <video className="mid-header-video" autoPlay playsInline muted loop>
-              <source
-                type="video/mp4"
-                src="https://res.cloudinary.com/matchaprince/video/upload/v1654204077/final_6298f521360d2e00d54e7b11_531959_m00i0z.mp4"
-              />
-            </video>
-          )}
-          <div id="video-text-container">
-            <h2 id="video-text-title">
-              {!sessionUser
-                ? "Find your inspiration."
-                : "Begin the Inspiration."}
-            </h2>
-            <div id="demo-user-btns">
-              {!sessionUser ? (
-                <a href="/signup">
-                  <button id="video-signup-button">Start for Free</button>
-                </a>
-              ) : (
-                <a href="/photos">
-                  <button id="browse-looks-button">Browse Looks</button>
-                </a>
-              )}
-              {!sessionUser ? (
-                <form id="demo-user-container" onSubmit={handleDemoSubmit}>
-                  <button id="demo-user-btn">Demo User</button>
-                </form>
-              ) : (
-                <></>
-              )}
-            </div>
-          </div>
+    <div>
+      <div id="gray-overlay-navbar">
+        <a href="/">
+          <img
+            id="nav-logo-splash"
+            src="https://res.cloudinary.com/matchaprince/image/upload/v1660523189/designer-tsnp-crop_dytxmu.png"
+          />
+        </a>
+        <div id="splash-auth-btns-ctnr">
+          <LoginFormModal />
+          <NavLink to="/signup">
+            <button id="nav-signup-btn">Sign Up</button>
+          </NavLink>
         </div>
       </div>
+      <div id="video-text-container">
+        <h2 id="video-text-title">Find your inspiration.</h2>
+        <h3 id="video-text-subtitle">
+          Join the ĐESIGNR community, archive and  share <br/>the best and
+          latest fashion.
+        </h3>
+        <button id="demo-user-btn" onClick={handleDemoSubmit}>
+          Start as Demo
+        </button>
+      </div>
+      <video autoPlay playsInline muted loop id="myVideo">
+        <source
+          src="https://res.cloudinary.com/www-eliesaab-com/video/upload/c_scale,h_1200,q_auto:good/v1644226949/HC_SS22_Banner_video_1_z56lug.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support HTML5 video.
+      </video>
     </div>
   );
 }

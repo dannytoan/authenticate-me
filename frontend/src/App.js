@@ -21,14 +21,14 @@ function App() {
   }, [dispatch]);
 
   return (
-    isLoaded && (
+    // isLoaded && (
       <>
-        <Navigation isLoaded={isLoaded} />
+        {/* <Navigation isLoaded={isLoaded} /> */}
+        {/* {isLoaded && ( */}
+          <Switch>
             <Route path="/signup">
               <SignUpFormPage />
             </Route>
-        {isLoaded && (
-          <Switch>
             <Route exact path="/">
               <Splash />
             </Route>
@@ -48,10 +48,10 @@ function App() {
               <CollectionDetail />
             </Route>
           </Switch>
-        )}
+        {/* )} */}
       </>
     )
-  );
+  // );
 }
 
 export default App;
