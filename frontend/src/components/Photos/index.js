@@ -8,10 +8,6 @@ export default function Photos() {
     return Object.values(state.photos);
   });
 
-  // console.log(photos)
-  const numCount = "123131313123122123221322132313113";
-  console.log("NUM COUNT", numCount.length)
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,6 +17,9 @@ export default function Photos() {
   return (
     <div id="body">
       <ul id="img-container">
+        <h2 id="h2-explore-title">Explore</h2>
+        <div id="all-photos-ctnr">
+
         {photos.map((photo) => (
           <li key={photo.id} className="li">
             <a href={`/photos/${photo.id}`}>
@@ -29,6 +28,7 @@ export default function Photos() {
             <div className="photo-description">{photo.description}</div>
           </li>
         ))}
+        </div>
       </ul>
     </div>
   );
