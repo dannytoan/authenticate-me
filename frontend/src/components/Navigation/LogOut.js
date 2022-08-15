@@ -12,7 +12,7 @@ function LogOut ({}) {
     };
 
     return (
-        <button onClick={logout} id="signout-button">Sign Out</button>
+        <button onClick={logout} id="nav-signup-btn">Sign Out</button>
     )
 }
 
