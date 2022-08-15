@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import LoginFormModal from "../LoginFormModal";
 import LogOut from "../Navigation/LogOut";
 import * as sessionActions from "../../store/session";
+import SignupFormModal from "../SignupFormPage";
 
 function Splash() {
   const dispatch = useDispatch();
@@ -31,9 +32,10 @@ function Splash() {
         {sessionUser ? <LogOut user={sessionUser} /> :
         <div id="splash-auth-btns-ctnr">
           <LoginFormModal />
-          <NavLink to="/signup">
+          {/* <NavLink to="/signup">
             <button id="nav-signup-btn">Sign Up</button>
-          </NavLink>
+          </NavLink> */}
+          <SignupFormModal />
         </div>
         }
       </div>
