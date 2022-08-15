@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { createLook } from "../../store/photos";
 import { useHistory } from "react-router-dom";
 import { getCollections } from "../../store/collections";
-import "./CreateALook.css";
+import "./UploadPhotoForm.css";
 
-const CreateALook = () => {
+const UploadPhotoForm = ({setShowModal}) => {
   const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
   const [collectionId, setCollectionId] = useState(null);
@@ -26,22 +26,23 @@ const CreateALook = () => {
     const errors = [];
 
     if (imageUrl.length < 1) {
-      errors.push("Please provide an Image URL.")
+      errors.push("Please provide an Image URL.");
     }
 
-    if (!(imageUrl.includes(".jpg" || ".png"))) {
-      errors.push("Please provide a valid Image URL.")
+    if (!imageUrl.includes(".jpg" || ".png")) {
+      errors.push("Please provide a valid Image URL.");
     }
 
     if (description.length < 1) {
-      errors.push("Please provide a title.")
+      errors.push("Please provide a title.");
     } else if (description.length < 1 || description.length > 32) {
-      errors.push("Title must contain at least 1 and no more than 32 characters.")
+      errors.push(
+        "Title must contain at least 1 and no more than 32 characters."
+      );
     }
 
     setErrors(errors);
-  }, [imageUrl, description])
-
+  }, [imageUrl, description]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,20 +52,22 @@ const CreateALook = () => {
       collectionId,
       imageUrl,
       description,
-    }
+    };
 
-    dispatch(createLook(payload))
+    dispatch(createLook(payload));
+    setShowModal(false)
 
-    history.push("/photos")
-  }
-
-
+    history.push("/photos");
+  };
 
   return (
-    <div>
-      <div id="form-container">
-        <form id="form" onSubmit={(e) => handleSubmit(e)}>
-        <h1 id="create-a-look-header">CREATE A LOOK</h1>
+    <div id="form-container">
+      <div>
+        <form
+          id="upload-photo-modal-form"
+          onSubmit={(e) => handleSubmit(e)}
+        >
+          <h1 id="create-a-look-header">Upload a Photo</h1>
 
           <label className="add-a-look-labels">Image URL: </label>
           <input
@@ -74,7 +77,7 @@ const CreateALook = () => {
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             className="input"
-            />
+          />
           <label className="add-a-look-labels">Title: </label>
           <input
             type="text"
@@ -89,33 +92,44 @@ const CreateALook = () => {
             className="input select"
             onChange={(e) => setCollectionId(e.target.value)}
           >
-            <option value={null} >Choose a collection</option>
+            <option value={null}>Choose a collection</option>
             {collections.map((collection) => (
               <option key={collection.id} value={collection.id}>
                 {collection.title}
               </option>
             ))}
           </select>
-          <button
-            className="submit"
-            disabled={(errors.length > 0)}
-          >
+          <button className="submit" disabled={errors.length > 0}>
             Submit
           </button>
         </form>
-      </div>
-      <video id="add-look-video-bg" autoPlay playsInline muted loop>
-          <source type="video/mp4" src="https://res.cloudinary.com/matchaprince/video/upload/v1654329042/final_629b0588c72b7b0066e388df_607188_orb7k9.mp4"/>
+        <video id="add-look-video-bg" autoPlay playsInline muted loop>
+          <source
+            type="video/mp4"
+            src="https://res.cloudinary.com/matchaprince/video/upload/v1654329042/final_629b0588c72b7b0066e388df_607188_orb7k9.mp4"
+          />
         </video>
-        <div id="add-a-look-errors">
-              {errors.includes("Please provide an Image URL." || "Please provide a title." || "Please provide a valid Image URL." || "Title must contain at least 1 and no more than 32 characters.") ? <></> : <ul>
-                {errors.map((error, idx) => (
-                  <li key={idx} className="add-a-look-li">{error}</li>
-                ))}
-              </ul>}
-            </div>
+      </div>
+      <div id="add-a-look-errors">
+        {errors.includes(
+          "Please provide an Image URL." ||
+            "Please provide a title." ||
+            "Please provide a valid Image URL." ||
+            "Title must contain at least 1 and no more than 32 characters."
+        ) ? (
+          <></>
+        ) : (
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx} className="add-a-look-li">
+                {error}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
 
-export default CreateALook;
+export default UploadPhotoForm;

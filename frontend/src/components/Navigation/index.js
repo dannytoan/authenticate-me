@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import UploadPhotoFormModal from "../UploadPhotoModal";
 import "./Navigation.css";
 
 export default function Navigation({ isLoaded }) {
@@ -43,9 +44,7 @@ export default function Navigation({ isLoaded }) {
         </a>
       </div>
       <div id="nav-icon-cntr">
-        <a href="/photos/new">
-          <i class="fa-solid fa-cloud-arrow-up navbar-icons"></i>
-        </a>
+        <UploadPhotoFormModal />
         <a href="/collections">
           <i class="fa-solid fa-bookmark navbar-icons"></i>
         </a>

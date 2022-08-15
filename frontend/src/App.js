@@ -4,7 +4,6 @@ import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation/index";
 import Photos from "./components/Photos";
-import CreateALook from "./components/Photos/CreateALook";
 import Splash from "./components/Splash";
 import PhotoDetail from "./components/Photos/PhotoDetail";
 import Collections from "./components/Collections";
@@ -30,10 +29,8 @@ function App() {
             <Navigation isLoaded={isLoaded} />
               <Photos />
             </Route>
-            <Route exact path="/photos/new">
-              <CreateALook />
-            </Route>
             <Route exact path="/photos/:id">
+            <Navigation isLoaded={isLoaded} />
               <PhotoDetail />
             </Route>
             <Route exact path="/collections">
