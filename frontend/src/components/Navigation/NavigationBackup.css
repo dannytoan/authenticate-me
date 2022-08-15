@@ -1,0 +1,102 @@
+
+* {
+    margin: 0;
+}
+
+
+#auth-buttons {
+    display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-width: 1080px;
+  height: 30px;
+  padding: 10px;
+  justify-content: space-evenly;
+  align-items: center;
+  position: relative;
+  left: -60px;
+}
+
+.nav-bg {
+    min-width: 965px;
+    width: 100%;
+    border-top: 1px black solid;
+    border-bottom: 1px black solid;
+    min-width: 1080px;
+}
+
+.auth-btn {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.signup-btn {
+    margin-right: 20px;
+}
+
+#home-btn {
+    position: relative;
+    right: 10px;
+}
+
+#login-btn {
+    /* margin-right: 10px; */
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    cursor: pointer;
+    /* font-weight: 600; */
+    color: white;
+    padding: 5px 15px;
+  }
+
+#profile-btn {
+    margin-right: 15px;
+}
+
+#masthead {
+    height: 125px;
+    width: 100%;
+    min-width: 1080px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    font-size: 50px;
+    margin-top: 25px;
+    font-family: fantasy;
+    letter-spacing: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+#masthead-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+    position: relative;
+    bottom: 115px;
+}
+
+.auth-btn {
+border: none;
+background-color: transparent;
+font-size: 15px;
+cursor: pointer;
+}
+
+#signout-button {
+    margin-right: 10px;
+    border: none;
+    background-color: black;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    padding: 5px 15px;
+
+}

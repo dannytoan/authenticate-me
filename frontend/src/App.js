@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignUpFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
-import Navigation from "./components/Navigation";
-
+import Navigation from "./components/Navigation/index";
 import Photos from "./components/Photos";
 import CreateALook from "./components/Photos/CreateALook";
 import Splash from "./components/Splash";
@@ -21,18 +19,15 @@ function App() {
   }, [dispatch]);
 
   return (
-    // isLoaded && (
+    isLoaded && (
       <>
-        {/* <Navigation isLoaded={isLoaded} /> */}
-        {/* {isLoaded && ( */}
-          <Switch>
-            <Route path="/signup">
-              <SignUpFormPage />
-            </Route>
             <Route exact path="/">
               <Splash />
             </Route>
+        {isLoaded && (
+          <Switch>
             <Route exact path="/photos">
+            <Navigation isLoaded={isLoaded} />
               <Photos />
             </Route>
             <Route exact path="/photos/new">
@@ -42,16 +37,17 @@ function App() {
               <PhotoDetail />
             </Route>
             <Route exact path="/collections">
+            <Navigation isLoaded={isLoaded} />
               <Collections />
             </Route>
             <Route exact path="/collections/:id">
               <CollectionDetail />
             </Route>
           </Switch>
-        {/* )} */}
+        )}
       </>
     )
-  // );
+  );
 }
 
 export default App;
