@@ -23,7 +23,7 @@ function LoginForm() {
     <div id="modal-container">
       <div id="login-text-container">
         <h1 id="login-text">Log in to your account</h1>
-        <p id="login-text-desc">Enter your credentials to continue.</p>
+        {/* <p id="login-text-desc">Enter your credentials to continue.</p> */}
       </div>
       <form onSubmit={handleSubmit} id="modal-form">
         <ul>
