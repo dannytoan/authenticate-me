@@ -59,8 +59,11 @@ const PhotoDetail = () => {
             <h1 id="photo-title">{selectPhoto?.description}</h1>
             <div className="text photo-uploader-name">Uploaded by {selectPhoto?.User.username}</div>
             </div>
+            <div id="outer-comments-ctnr">
+
               <Comments selectPhoto={selectPhoto} />
               <NewCommentForm photoId={selectPhoto?.id}/>
+            </div>
           </div>
         </div>
       </div>

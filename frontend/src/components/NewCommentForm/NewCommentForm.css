@@ -1,0 +1,34 @@
+form#new-comment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  div#new-comment-form-ctnr {
+    width: 100%;
+  }
+
+  textarea#new-comment-form-textarea {
+    resize: none;
+    width: 94%;
+    height: 4rem;
+    font-family: sans-serif;
+    padding: 10px;
+    border-radius: 3px;
+  }
+
+  button#new-comment-form-submit-btn {
+    width: 8rem;
+    height: 2rem;
+    font-size: 1rem;
+    background: #212124;
+    color: white;
+    font-weight: 600;
+    border-radius: 3px;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+
+  button#new-comment-form-submit-btn:hover {
+    opacity: .95;
+  }
