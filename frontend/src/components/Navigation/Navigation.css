@@ -27,6 +27,7 @@ div#nav-cntr {
     font-size: 2rem;
     color: white;
     margin: 0 1rem;
+    cursor: pointer;
   }
 
   a.nav-left-about-links {
@@ -42,4 +43,8 @@ div#nav-cntr {
     align-items: center;
     position: relative;
     right: 8rem;
+  }
+
+  i.fa-solid.fa-arrow-right-from-bracket.navbar-icons {
+    margin-left: 1.5rem;
   }

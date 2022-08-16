@@ -7,7 +7,7 @@ function AddCollectionFormModal() {
 
   return (
     <>
-      <button id="add-collection-click-btn" onClick={() => setShowModal(true)}>Add Collection</button>
+      <button id="add-collection-click-btn" onClick={() => setShowModal(true)}><i class="fa-solid fa-folder-plus"></i> New album</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <AddCollectionForm setShowModal={setShowModal}/>

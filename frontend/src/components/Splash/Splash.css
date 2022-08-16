@@ -22,7 +22,7 @@
   }
 
   div#splash-auth-btns-ctnr {
-    width: 10%;
+    width: 11%;
     display: flex;
     justify-content: space-between;
   }
@@ -121,4 +121,13 @@
 
   .splash-footer-links:hover {
     color: white;
+  }
+
+  button#login-btn {
+    background: none;
+    color: white;
+    border: none;
+    font-size: 1rem;
+    margin-right: 0rem;
+    cursor: pointer;
   }
