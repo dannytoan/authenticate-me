@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { getPhotoDetail, deleteLook } from "../../store/photos";
 import Comments from "./Comments";
 import EditPhotoFormModal from "../EditPhotoModal";
+import NewCommentForm from "../NewCommentForm";
 
 import "./PhotoDetail.css";
 
@@ -19,9 +20,7 @@ const PhotoDetail = () => {
   })[0];
 
   const collections = Object.values(useSelector((state) => state.collections));
-  console.log("COLLECTIONS", collections)
 
-  const currentPhotoCollection = collections.filter((collection) => selectPhoto.collectionId === collection.id)
 
   useEffect(() => {
     dispatch(getPhotoDetail(id));
@@ -61,6 +60,7 @@ const PhotoDetail = () => {
             <div className="text photo-uploader-name">Uploaded by {selectPhoto?.User.username}</div>
             </div>
               <Comments selectPhoto={selectPhoto} />
+              <NewCommentForm photoId={selectPhoto?.id}/>
           </div>
         </div>
       </div>
