@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { getCollections } from "../../store/collections";
 import { useSelector, useDispatch } from "react-redux";
 import AddCollectionFormModal from "../AddCollectionModal";
-import { Modal } from '../../context/Modal';
+import { Modal } from "../../context/Modal";
 import "./Collections.css";
 
 export default function Collections() {
@@ -17,18 +17,24 @@ export default function Collections() {
 
   return (
     <div id="collections-body">
-      <h1 id="collections-title">COLLECTIONS</h1>
-            <AddCollectionFormModal />
+      <div id="collections-header-cntr">
+
+      <div id="collections-title">My Collections</div>
+      <AddCollectionFormModal />
+      </div>
 
       <div id="collections-container">
         {/* <div id="add-collection-container"> */}
-          {/* <div id="add-collection-btn">+</div> */}
+        {/* <div id="add-collection-btn">+</div> */}
         {/* </div> */}
         {collections.map((collection) => (
-          <div key={collection.id} id="collections-li">
+          <div key={collection.id} className="collections-li">
             <a id="anchor" href={`/collections/${collection.id}`}>
-              <img id="collection-cover-img" src={collection.coverImg} />
-              <h3 class="select-collection-title">{collection.title}</h3>
+              <img className="collection-cover-img" src={collection.coverImg} />
+              <div className="collection-overlay-ctnr">
+                <div className="select-collection-title">{collection.title}</div>
+                <div>{collection.Photos.length} Looks</div>
+              </div>
             </a>
           </div>
         ))}

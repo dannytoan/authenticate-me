@@ -32,6 +32,7 @@ function AddCollectionForm({setShowModal}) {
     // });
 
     if (newCollection) {
+      window.location.reload(false)
       setShowModal(false)
     }
   };

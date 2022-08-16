@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation/index";
 import Photos from "./components/Photos";
@@ -25,21 +26,22 @@ function App() {
             </Route>
         {isLoaded && (
           <Switch>
-            <Route exact path="/photos">
+            <ProtectedRoute exact path="/photos">
             <Navigation isLoaded={isLoaded} />
               <Photos />
-            </Route>
-            <Route exact path="/photos/:id">
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/photos/:id">
             <Navigation isLoaded={isLoaded} />
               <PhotoDetail />
-            </Route>
-            <Route exact path="/collections">
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/collections">
             <Navigation isLoaded={isLoaded} />
               <Collections />
-            </Route>
-            <Route exact path="/collections/:id">
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/collections/:id">
+            <Navigation isLoaded={isLoaded} />
               <CollectionDetail />
-            </Route>
+            </ProtectedRoute>
           </Switch>
         )}
       </>

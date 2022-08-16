@@ -1,9 +1,14 @@
-import { useSelector } from "react-redux";
 import UploadPhotoFormModal from "../UploadPhotoModal";
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/session';
 import "./Navigation.css";
 
 export default function Navigation({ isLoaded }) {
-  const sessionUser = useSelector((state) => state.session.user);
+    const dispatch = useDispatch()
+
+  const onLogout = async (e) => {
+    await dispatch(logout());
+  };
 
   return (
     <div id="nav-cntr">
@@ -48,6 +53,7 @@ export default function Navigation({ isLoaded }) {
         <a href="/collections">
           <i class="fa-solid fa-bookmark navbar-icons"></i>
         </a>
+        <i class="fa-solid fa-arrow-right-from-bracket navbar-icons" onClick={onLogout}></i>
       </div>
     </div>
   );
