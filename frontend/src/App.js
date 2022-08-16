@@ -10,6 +10,7 @@ import PhotoDetail from "./components/Photos/PhotoDetail";
 import Collections from "./components/Collections";
 import CollectionDetail from "./components/Collections/CollectionDetail";
 import { getComments } from "./store/comments";
+import { getCollections } from "./store/collections";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function App() {
     (async() => {
       await dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
       await dispatch(getComments())
+      await dispatch(getCollections())
       setIsLoaded(true);
     })();
   }, [dispatch]);

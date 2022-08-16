@@ -11,9 +11,6 @@ const Comments = ({ selectPhoto }) => {
     (comment) => comment.photoId === selectPhoto?.id
   );
 
-  console.log("SELECT PHOTO COMMENTS", selectPhotoComments)
-
-
 
   return (
     <div id="comments">

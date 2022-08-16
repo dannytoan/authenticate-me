@@ -60,4 +60,17 @@ img#selected-photo {
     font-size: 14px;
     color: #515151;
     margin-top: 0.5rem;
+}
+
+.photo-collection-name-back {
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    width: 97%;
+    position: relative;
+    bottom: 2.5rem;
+  }
+
+  .photo-collection-name-back:hover {
+    text-decoration: underline;
   }
