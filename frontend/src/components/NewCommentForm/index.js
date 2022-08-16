@@ -1,6 +1,7 @@
 import { createComment } from "../../store/comments";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import "./NewCommentForm.css"
+import { useState } from "react";
 
 function NewCommentForm({photoId}) {
     const dispatch = useDispatch();
@@ -17,21 +18,25 @@ function NewCommentForm({photoId}) {
             comment
         }
 
-        dispatch(createComment(payload))
+       const newComment = dispatch(createComment(payload))
+
+       if (newComment) {
+        window.location.reload(false)
+       }
     }
 
     return (
-        <div>
-            <div>NEW COMMENT FORM</div>
-            <form onSubmit={handleSubmit}>
+        <div id="new-comment-form-ctnr">
+            <form id="new-comment-form" onSubmit={handleSubmit}>
                 <textarea
                 type="text"
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Add a comment"
+                id="new-comment-form-textarea"
                 required
                 />
-                <button>Submit</button>
+                <button id="new-comment-form-submit-btn">Submit</button>
             </form>
         </div>
     )
