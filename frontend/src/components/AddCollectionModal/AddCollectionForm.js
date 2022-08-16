@@ -26,11 +26,6 @@ function AddCollectionForm({setShowModal}) {
 
     const newCollection = dispatch(createCollection(payload));
 
-    // newCollection.catch(async (res) => {
-    //   const data = await res.json();
-    //   if (data && data.errors) setErrors(data.errors);
-    // });
-
     if (newCollection) {
       window.location.reload(false)
       setShowModal(false)

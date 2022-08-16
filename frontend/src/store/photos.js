@@ -39,10 +39,8 @@ export const createLook = (payload) => async (dispatch) => {
     method: "POST",
     body: JSON.stringify(payload),
   });
-  // console.log("HIT CREATE LOOK THUNK!!!!!!!!!!!!!!!")
 
   const look = await res.json();
-  // console.log("LOOK IN THUNK", payload)
 
   if (look) {
     dispatch(addOneLook(look));
@@ -56,7 +54,6 @@ export const getPhotoDetail = (id) => async (dispatch) => {
   const res = await csrfFetch(`/api/photos/${id}`)
 
   const look = await res.json();
-  // console.log(look, "LOOK INSIDE THUNK")
 
   if (look) {
     dispatch(addOneLook(look))
