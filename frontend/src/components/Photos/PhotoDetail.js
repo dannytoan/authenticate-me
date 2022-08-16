@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { getPhotoDetail, deleteLook } from "../../store/photos";
-import { getCollections } from "../../store/collections";
 import Comments from "./Comments";
 import EditPhotoFormModal from "../EditPhotoModal";
 
@@ -10,6 +9,7 @@ import "./PhotoDetail.css";
 
 const PhotoDetail = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const params = useParams();
   const { id } = params;
 
@@ -19,11 +19,9 @@ const PhotoDetail = () => {
   })[0];
 
   const collections = Object.values(useSelector((state) => state.collections));
+  console.log("COLLECTIONS", collections)
 
-  const [collectionId, setCollectionId] = useState(null);
-
-  //   console.log("PHOTO", photo);
-  //   console.log("SELECT PHOTO", selectPhoto?.imageUrl);
+  const currentPhotoCollection = collections.filter((collection) => selectPhoto.collectionId === collection.id)
 
   useEffect(() => {
     dispatch(getPhotoDetail(id));
@@ -33,14 +31,11 @@ const PhotoDetail = () => {
     }
   }, [dispatch, id]);
 
-  useEffect(() => {
-    dispatch(getCollections());
-  }, [dispatch]);
-
   return (
     <div>
       <div id="photo-detail-container">
         <div id="photo-detail-img-ctnr">
+          <div className="text photo-collection-name-back" onClick={history.goBack}><i class="fa-solid fa-arrow-left"></i> Back</div>
           <img
             id="selected-photo"
             className="select-photo"
