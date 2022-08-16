@@ -9,13 +9,18 @@ import Splash from "./components/Splash";
 import PhotoDetail from "./components/Photos/PhotoDetail";
 import Collections from "./components/Collections";
 import CollectionDetail from "./components/Collections/CollectionDetail";
+import { getComments } from "./store/comments";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    (async() => {
+      await dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+      await dispatch(getComments())
+      setIsLoaded(true);
+    })();
   }, [dispatch]);
 
   return (
