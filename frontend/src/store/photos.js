@@ -87,8 +87,6 @@ export const deleteLook = (selectId) => async dispatch => {
     method: 'DELETE',
   });
 
-  console.log("RESPONSE IN STORE", response)
-
   if (response.ok) {
     dispatch(deleting(selectId));
   }

@@ -28,7 +28,6 @@ function EditPhotoForm({setShowModal}) {
 
   useEffect(() => {
     dispatch(getPhotoDetail(id));
-    // console.log("INSIDE THE USE EFFECT")
     if (photo) {
       return;
     }
