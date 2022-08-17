@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const LOAD_COM = "comments/LOAD_COM";
 const NEW_COM = "comments/NEW_COM";
+const DEL_COM = "comments/DEL_COM";
 
 // POJO ACTION CREATORS
 const load = (comments) => ({
@@ -12,6 +13,11 @@ const load = (comments) => ({
 const create = (comment) => ({
   type: NEW_COM,
   comment,
+});
+
+const delCom = (id) => ({
+  type: DEL_COM,
+  id,
 });
 
 // THUNK ACTION CREATORS
@@ -40,6 +46,32 @@ export const createComment = (payload) => async (dispatch) => {
   }
 };
 
+export const editComment = (id, payload) => async (dispatch) => {
+  const res = await csrfFetch(`/api/comments/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(payload),
+  });
+
+  const comment = await res.json();
+  console.log("EDITED COMMENT", comment);
+  console.log("PAYLOAD", payload);
+
+  if (comment) {
+    dispatch(create(comment));
+  }
+};
+
+export const deleteComment = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments/${id}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    dispatch(delCom(id));
+  }
+  return response;
+};
+
 // REDUCER
 const commentsReducer = (state = {}, action) => {
   const newState = { ...state };
@@ -53,7 +85,9 @@ const commentsReducer = (state = {}, action) => {
     case NEW_COM:
       const newComState = { ...state, [action.comment.id]: action.comment };
       return newComState;
-
+    case DEL_COM:
+      const updatedState = { ...state };
+      return updatedState;
     default:
       return state;
   }
