@@ -32,9 +32,9 @@ function EditComment({ commentData }) {
   }
 
   return (
-    <div>
+    <div id="edit-comment-form-outer-cntr">
       <i
-        class={showEdit === false ? "fa-solid fa-pen-to-square" : "fa-solid fa-xmark"}
+        class={showEdit === false ? "fa-solid fa-pen-to-square edit-comment-btn" : "fa-solid fa-xmark"}
         onClick={onEdit}
       ></i>
       <form onSubmit={handleEdit}>
@@ -44,14 +44,19 @@ function EditComment({ commentData }) {
           required
           className={showEdit ? "showEdit" : "hideShowEdit"}
           />
+          <div id="edit-comment-buttons-ctnr">
+
         <button
+          id="edit-comment-buttons-submit"
           className={showEdit ? "showEdit" : "hideShowEdit"}
 
           >Submit</button>
         <button
+          id="edit-comment-buttons-delete"
           className={showEdit ? "showEdit" : "hideShowEdit"}
 
-        onClick={() => dispatch(deleteComment(commentData.id)) && window.location.reload(false)}>Delete</button>
+          onClick={() => dispatch(deleteComment(commentData.id)) && window.location.reload(false)}>Delete</button>
+          </div>
       </form>
     </div>
   );

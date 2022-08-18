@@ -16,20 +16,20 @@ export default function Photos() {
 
   return (
     <div id="body">
-      <ul id="img-container">
+      <div id="img-container">
         <h2 id="h2-explore-title">Explore</h2>
         <div id="all-photos-ctnr">
 
         {photos.map((photo) => (
-          <li key={photo.id} className="li">
+          <div key={photo.id} className="li">
             <a href={`/photos/${photo.id}`}>
               <img className="photo" src={photo.imageUrl}></img>
+            <div className="photo-description-overlay">{photo.description}</div>
             </a>
-            <div className="photo-description">{photo.description}</div>
-          </li>
+          </div>
         ))}
         </div>
-      </ul>
+      </div>
     </div>
   );
 }
