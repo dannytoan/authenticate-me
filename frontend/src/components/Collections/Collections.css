@@ -1,6 +1,6 @@
 div#collections-container {
     display: flex;
-    margin: 1rem 10rem;
+    margin: 1rem 0rem;
   }
 
   #collections-title {
@@ -12,6 +12,8 @@ div#collections-container {
   div#collections-body {
     position: relative;
     top: 5rem;
+    margin: 0px 19rem;
+    width: 70.5%;
   }
 
   .collection-cover-img {
@@ -56,8 +58,12 @@ div#collections-container {
     cursor: pointer;
   }
 
+  button#add-collection-click-btn:hover {
+    opacity: .9;
+  }
+
   div#collections-header-cntr {
     display: flex;
-    padding: 0 11rem;
+    /* padding: 0 11rem; */
     justify-content: space-between;
   }

@@ -5,3 +5,67 @@
 .showEdit {
     display: block;
 }
+
+div#edit-comment-buttons-ctnr {
+    display: flex;
+    margin-top: 0.5rem;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  button#edit-comment-buttons-submit {
+    width: 5rem;
+    height: 1.5rem;
+    background: #212124;
+    color: white;
+    font-weight: 600;
+    margin-left: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button#edit-comment-buttons-delete {
+    width: 5rem;
+    height: 1.5rem;
+    background: #ffffff;
+    color: black;
+    font-weight: 600;
+    margin-left: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  button#edit-comment-buttons-submit:hover {
+    opacity: .9;
+  }
+
+  button#edit-comment-buttons-delete:hover {
+    opacity: .9;
+  }
+
+  div#comment-content-cntr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  i.fa-solid.fa-pen-to-square.edit-comment-btn {
+    cursor: pointer;
+    width: 100%;
+    text-align: right;
+    position: relative;
+    bottom: 1.25rem;
+  }
+
+  i.fa-solid.fa-pen-to-square.edit-comment-btn:hover {
+    opacity: 0.7;
+  }
+
+  i.fa-solid.fa-xmark {
+    cursor: pointer;
+  }
+
+  i.fa-solid.fa-xmark:hover {
+    opacity: .7;
+  }

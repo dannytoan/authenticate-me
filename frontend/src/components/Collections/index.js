@@ -24,10 +24,7 @@ export default function Collections() {
       </div>
 
       <div id="collections-container">
-        {/* <div id="add-collection-container"> */}
-        {/* <div id="add-collection-btn">+</div> */}
-        {/* </div> */}
-        {collections.map((collection) => (
+        {collections.length ? collections.map((collection) => (
           <div key={collection.id} className="collections-li">
             <a id="anchor" href={`/collections/${collection.id}`}>
               <img className="collection-cover-img" src={collection.coverImg} />
@@ -37,7 +34,7 @@ export default function Collections() {
               </div>
             </a>
           </div>
-        ))}
+        )) : <div className="text">"You have no collections!"</div>}
       </div>
     </div>
   );

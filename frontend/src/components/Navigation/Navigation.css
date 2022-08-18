@@ -11,6 +11,19 @@ div#nav-cntr {
     align-content: center;
     align-items: center;
     justify-content: space-around;
+    z-index: 5;
+  }
+
+  div#nav-content-outer-ctnr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 19rem;
+  }
+
+  div#nav-icon-cntr {
+    min-width: fit-content;
   }
 
   img#nav-logo {
@@ -41,8 +54,8 @@ div#nav-cntr {
     color: white;
     display: flex;
     align-items: center;
-    position: relative;
-    right: 8rem;
+    /* position: relative;
+    right: 8rem; */
   }
 
   i.fa-solid.fa-arrow-right-from-bracket.navbar-icons {

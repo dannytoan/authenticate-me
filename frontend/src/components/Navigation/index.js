@@ -1,10 +1,10 @@
 import UploadPhotoFormModal from "../UploadPhotoModal";
-import { useDispatch } from 'react-redux';
-import { logout } from '../../store/session';
+import { useDispatch } from "react-redux";
+import { logout } from "../../store/session";
 import "./Navigation.css";
 
 export default function Navigation({ isLoaded }) {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onLogout = async (e) => {
     await dispatch(logout());
@@ -12,13 +12,14 @@ export default function Navigation({ isLoaded }) {
 
   return (
     <div id="nav-cntr">
-          <div id="nav-left-container">
-      <a href="/photos">
-        <img
-          id="nav-logo"
-          src="https://res.cloudinary.com/matchaprince/image/upload/v1660523189/designer-tsnp-crop_dytxmu.png"
-        />
-      </a>
+      <div id="nav-content-outer-ctnr">
+      <div id="nav-left-container">
+        <a href="/photos">
+          <img
+            id="nav-logo"
+            src="https://res.cloudinary.com/matchaprince/image/upload/v1660523189/designer-tsnp-crop_dytxmu.png"
+          />
+        </a>
         <a
           href="https://dannytoan.github.io/"
           target="_blank"
@@ -53,7 +54,11 @@ export default function Navigation({ isLoaded }) {
         <a href="/collections">
           <i class="fa-solid fa-bookmark navbar-icons"></i>
         </a>
-        <i class="fa-solid fa-arrow-right-from-bracket navbar-icons" onClick={onLogout}></i>
+        <i
+          class="fa-solid fa-arrow-right-from-bracket navbar-icons"
+          onClick={onLogout}
+        ></i>
+        </div>
       </div>
     </div>
   );

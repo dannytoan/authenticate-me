@@ -37,6 +37,7 @@ img#selected-photo {
 
   div#comments {
     font-family: sans-serif;
+    width: 25rem;
   }
 
   div#comments-details {
@@ -45,7 +46,7 @@ img#selected-photo {
 
   div#photo-detail-details-ctnr {
     display: flex;
-    width: 50%;
+    width: 55%;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -96,4 +97,18 @@ img#selected-photo {
     position: relative;
     top: 4rem;
     margin-right: 1rem;
+  }
+
+  div#comment-content {
+    display: flex;
+    justify-content: space-between;
+    overflow-wrap: anywhere;
+    padding: 0 1rem;
+    flex-direction: row;
+  }
+
+  textarea.showEdit {
+    width: 99%;
+    resize: none;
+    height: 5rem;
   }

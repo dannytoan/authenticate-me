@@ -22,16 +22,13 @@ const Comments = ({ selectPhoto }) => {
       {selectPhotoComments.map((comments) => (
         <div id="comments-details">
           <div id="comment-username">{comments.User?.username}</div>
-          <div>{comments.comment}
+          <div id="comment-content-cntr">
+          <div id="comment-content">{comments.comment}</div>
 
           {sessionUser.id === comments.userId && (
-            <div>
-              <EditComment
-                commentData={comments}
-              />
+            <EditComment commentData={comments} />
+            )}
             </div>
-          )}
-          </div>
         </div>
       ))}
     </div>

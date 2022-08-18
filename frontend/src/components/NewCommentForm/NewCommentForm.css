@@ -2,8 +2,8 @@ form#new-comment-form {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    margin-top: 1rem;
   }
-
   div#new-comment-form-ctnr {
     width: 100%;
   }
