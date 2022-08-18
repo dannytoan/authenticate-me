@@ -11,6 +11,7 @@ import Collections from "./components/Collections";
 import CollectionDetail from "./components/Collections/CollectionDetail";
 import { getComments } from "./store/comments";
 import { getCollections } from "./store/collections";
+import { getPhotos } from "./store/photos";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function App() {
       await dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
       await dispatch(getComments())
       await dispatch(getCollections())
+      await dispatch(getPhotos())
       setIsLoaded(true);
     })();
   }, [dispatch]);
