@@ -1,6 +1,7 @@
 import UploadPhotoFormModal from "../UploadPhotoModal";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
+import SearchBar from "../SearchBar";
 import "./Navigation.css";
 
 export default function Navigation({ isLoaded }) {
@@ -49,6 +50,7 @@ export default function Navigation({ isLoaded }) {
           AngelList
         </a>
       </div>
+      <SearchBar />
       <div id="nav-icon-cntr">
         <UploadPhotoFormModal />
         <a href="/collections">

@@ -1,0 +1,35 @@
+.nav-search-div {
+    position: fixed;
+    top: 0.65rem;
+    left: 54rem;
+  }
+
+  input#nav-search {
+    height: 1.75rem;
+    width: 15rem;
+    border-radius: 3px;
+    border: none;
+    opacity: 0.8;
+    padding: 0 10px;
+  }
+
+  a#search-result {
+    color: rgb(25, 25, 25);
+    background: white;
+    padding: 1rem 10px;
+    width: 15rem;
+    font-family: sans-serif;
+    line-height: 1.5;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  a#search-result:hover {
+    background-color: #eee;
+  }
+
+  img#search-result-img-prev {
+    width: 3rem;
+  }
