@@ -7,7 +7,7 @@ function EditPhotoFormModal() {
 
   return (
     <>
-      <button className="photo-detail-btn" onClick={() => setShowModal(true)}>Edit</button>
+      <button className="photo-detail-btn" onClick={() => setShowModal(true)}><i class="fa-solid fa-pen-to-square"></i></button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <EditPhotoForm setShowModal={setShowModal}/>
