@@ -75,3 +75,25 @@ img#selected-photo {
   .photo-collection-name-back:hover {
     text-decoration: underline;
   }
+
+  button.photo-detail-btn {
+    background: transparent;
+    border: none;
+    margin: 0 .5rem;
+    color: #ffffffd9;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  button.photo-detail-btn:hover {
+    opacity: 0.9;
+  }
+
+  div#photo-detail-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: 4rem;
+    margin-right: 1rem;
+  }

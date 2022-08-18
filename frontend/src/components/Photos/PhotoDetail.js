@@ -47,7 +47,7 @@ const PhotoDetail = () => {
                   className="photo-detail-btn"
                   onClick={() => dispatch(deleteLook(id))}
                 >
-                  Delete
+                  <i class="fa-solid fa-trash-can"></i>
                 </button>
               </a>
             </div>
