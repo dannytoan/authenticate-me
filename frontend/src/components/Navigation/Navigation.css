@@ -24,6 +24,7 @@ div#nav-cntr {
 
   div#nav-icon-cntr {
     min-width: fit-content;
+    position: inherit;
   }
 
   img#nav-logo {

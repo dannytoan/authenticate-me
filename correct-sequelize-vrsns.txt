@@ -1,0 +1,4 @@
+    replace in package.json in backend if anything goes wrong.
+
+    "sequelize": "^6.21.3",
+    "sequelize-cli": "^6.4.1"
