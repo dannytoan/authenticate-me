@@ -23,5 +23,12 @@
   "bugs": {
     "url": "https://github.com/dannytoan/authenticate-me/issues"
   },
-  "homepage": "https://github.com/dannytoan/authenticate-me#readme"
+  "homepage": "https://github.com/dannytoan/authenticate-me#readme",
+  "dependencies": {
+    "dep": "^0.18.3",
+    "sequelize": "^6.21.3"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.4.1"
+  }
 }
