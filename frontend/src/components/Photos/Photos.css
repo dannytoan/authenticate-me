@@ -49,6 +49,8 @@
     flex-direction: row;
     justify-content: center;
     color: black;
+    font-family: sans-serif;
+    text-align: center;
 }
 
 .photo img:hover {

@@ -42,6 +42,7 @@ const CollectionDetail = () => {
   return (
     <div id="collection-detail-body">
       <div id="collection-detail-UD-btns">
+        <EditCollectionFormModal />
         <a href="/collections">
           <button
             className="ud-btns"
@@ -50,7 +51,6 @@ const CollectionDetail = () => {
             Delete
           </button>
         </a>
-        <EditCollectionFormModal />
       </div>
       <h1 id="collection-title">{selectCollection?.title}</h1>
       {/* <button>Edit</button> */}

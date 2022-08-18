@@ -7,21 +7,24 @@ a {
     flex-direction: column;
     align-items: center;
     position: relative;
-    top: 3.5rem;
+    background-color: #212124;
+    top: 3.1rem;
   }
 
-#collection-detail-img {
-    width: 100%;
+  #collection-detail-img {
+    width: 22rem;
+    object-fit: contain;
     height: 25em;
     cursor: pointer;
-}
+  }
 
 #imgs-container {
     display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+    flex-direction: row;
+    margin: 0 18.65rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
 #li {
     list-style: none;
@@ -29,43 +32,42 @@ a {
 }
 
 #image-title {
-    color: black;
+    color: white;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-#collection-title {
-    margin: 40px 0 20px;
-    font-size: 30px;
-}
-
-.ud-btns {
-    border: none;
-  padding: 10px 20px;
-  font-family: sans-serif;
-  cursor: pointer;
-  z-index: 1;
-  font-weight: 600;
-  font-size: 18px;
-  background: black;
-  color: white;
-  margin: 5px 33px;
-  position: absolute;
-  right: -28px;
-}
-
-#edit-collection-click-btn {
-    border: none;
-    padding: 10px 20px;
+    margin-top: .25rem;
     font-family: sans-serif;
-    cursor: pointer;
-    z-index: 1;
-    font-weight: 600;
-    font-size: 18px;
-    background: black;
+  }
+
+  #collection-title {
+    margin: 1rem -39rem 0 0;
+    font-size: 30px;
+    font-family: sans-serif;
     color: white;
-    margin: 5px 33px;
-    position: absolute;
-    right: 85px;
+    width: 100%;
+  }
+
+  div#collection-detail-UD-btns {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  button#edit-collection-click-btn {
+    padding: 0.25rem 1rem;
+    background: white;
+    color: black;
+    font-weight: 600;
+    border-radius: 3px;
 }
+
+button.ud-btns {
+    padding: 0.25rem 1rem;
+    color: white;
+    background-color: black;
+    font-weight: 600;
+    border-radius: 3px;
+    margin: 0 1rem;
+  }
