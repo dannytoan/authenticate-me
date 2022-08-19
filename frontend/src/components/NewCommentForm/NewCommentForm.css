@@ -32,3 +32,11 @@ form#new-comment-form {
   button#new-comment-form-submit-btn:hover {
     opacity: .95;
   }
+
+  div#new-comments-error-valids {
+    width: 99%;
+    font-family: sans-serif;
+    font-size: 14px;
+    margin-top: .25rem;
+    color: #af3f3fab;
+  }
