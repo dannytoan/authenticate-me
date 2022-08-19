@@ -62,3 +62,7 @@ div#nav-cntr {
   i.fa-solid.fa-arrow-right-from-bracket.navbar-icons {
     margin-left: 1.5rem;
   }
+
+  .navbar-icons:hover {
+    opacity: .9;
+  }

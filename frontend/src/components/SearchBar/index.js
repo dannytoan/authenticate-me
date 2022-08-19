@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./SearchBar.css"
 
 function SearchBar() {
   const [query, setQuery] = useState("");
-  const sessionUser = useSelector((state) => state.session.user);
   const photos = useSelector((state) => Object.values(state.photos))
-  console.log("PHOTOS", photos)
-  console.log("QUERY", query)
 
 
   return (

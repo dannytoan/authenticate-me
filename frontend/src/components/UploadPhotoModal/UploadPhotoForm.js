@@ -103,12 +103,6 @@ const UploadPhotoForm = ({setShowModal}) => {
             Submit
           </button>
         </form>
-        <video id="add-look-video-bg" autoPlay playsInline muted loop>
-          <source
-            type="video/mp4"
-            src="https://res.cloudinary.com/matchaprince/video/upload/v1654329042/final_629b0588c72b7b0066e388df_607188_orb7k9.mp4"
-          />
-        </video>
       </div>
       <div id="add-a-look-errors">
         {errors.includes(
