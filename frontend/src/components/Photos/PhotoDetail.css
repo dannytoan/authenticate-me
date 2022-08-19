@@ -103,7 +103,7 @@ img#selected-photo {
     display: flex;
     justify-content: space-between;
     overflow-wrap: anywhere;
-    padding: 0 1rem;
+    padding: 0 2rem 0 0rem;
     flex-direction: row;
   }
 
