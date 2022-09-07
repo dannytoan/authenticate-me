@@ -27,9 +27,6 @@ router.post(
       description: req.body.description
     });
 
-    console.log("================HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO=========================", newPhotoUrl)
-
-
     return res.json(photo);
   })
 );

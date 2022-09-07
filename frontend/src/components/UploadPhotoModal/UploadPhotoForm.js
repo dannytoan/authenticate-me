@@ -8,13 +8,14 @@ import "./UploadPhotoForm.css";
 const UploadPhotoForm = ({ setShowModal }) => {
   const [imageUrl, setImageUrl] = useState(null);
   const [description, setDescription] = useState("");
-  const [collectionId, setCollectionId] = useState(null);
+  const [collectionId, setCollectionId] = useState(1);
   const [errors, setErrors] = useState([]);
 
   // FOR AWS
   // const [image, setImage] = useState(null);
 
   const sessionUser = useSelector((state) => state.session.user);
+  const photos = useSelector((state) => Object.values(state.photos))
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -51,7 +52,7 @@ const UploadPhotoForm = ({ setShowModal }) => {
     e.preventDefault();
 
     const payload = {
-      id: 20,
+      id: (photos[photos.length - 1]?.id) + 1,
       userId: sessionUser.id,
       collectionId,
       imageUrl,
@@ -69,9 +70,6 @@ const UploadPhotoForm = ({ setShowModal }) => {
     const file = e.target.files[0];
     if (file) setImageUrl(file);
   };
-
-  console.log("IMAGE IN AWS", imageUrl)
-  console.log("USER ID", sessionUser.id)
 
   return (
     <div id="form-container">
@@ -109,7 +107,7 @@ const UploadPhotoForm = ({ setShowModal }) => {
             className="input select"
             onChange={(e) => setCollectionId(e.target.value)}
           >
-            <option value={null}>Choose a collection</option>
+            {/* <option value={null}>Choose a collection</option> */}
             {collections.map((collection) => (
               <option key={collection.id} value={collection.id}>
                 {collection.title}
