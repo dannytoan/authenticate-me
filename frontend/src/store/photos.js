@@ -35,12 +35,32 @@ export const getPhotos = () => async (dispatch) => {
 
 export const createLook = (payload) => async (dispatch) => {
 
+  const { id, userId, collectionId, imageUrl, description } = payload;
+  const formData = new FormData();
+
+  console.log("IMAGE IN THUNK", imageUrl)
+
+  if (imageUrl) formData.append("imageUrl", imageUrl);
+  formData.append("id", id);
+  formData.append("userId", userId);
+  formData.append("collectionId", collectionId);
+  formData.append("description", description);
+
+  console.log("PAYLOAD", payload)
+  console.log("FORM DATA", formData)
+  console.log("ID", id)
+  console.log("description", description)
+
   const res = await csrfFetch(`/api/photos/new`, {
     method: "POST",
-    body: JSON.stringify(payload),
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+    body: formData,
   });
 
   const look = await res.json();
+
 
   if (look) {
     dispatch(addOneLook(look));
