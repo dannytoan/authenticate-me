@@ -5,11 +5,14 @@ import { useHistory } from "react-router-dom";
 import { getCollections } from "../../store/collections";
 import "./UploadPhotoForm.css";
 
-const UploadPhotoForm = ({setShowModal}) => {
-  const [imageUrl, setImageUrl] = useState("");
+const UploadPhotoForm = ({ setShowModal }) => {
+  const [imageUrl, setImageUrl] = useState(null);
   const [description, setDescription] = useState("");
   const [collectionId, setCollectionId] = useState(null);
   const [errors, setErrors] = useState([]);
+
+  // FOR AWS
+  // const [image, setImage] = useState(null);
 
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -25,13 +28,13 @@ const UploadPhotoForm = ({setShowModal}) => {
   useEffect(() => {
     const errors = [];
 
-    if (imageUrl.length < 1) {
-      errors.push("Please provide an Image URL.");
-    }
+    // if (imageUrl.length < 1) {
+    //   errors.push("Please provide an Image URL.");
+    // }
 
-    if (!imageUrl.includes(".jpg" || ".png")) {
-      errors.push("Please provide a valid Image URL.");
-    }
+    // if (!imageUrl.includes(".jpg" || ".png")) {
+    //   errors.push("Please provide a valid Image URL.");
+    // }
 
     if (description.length < 1) {
       errors.push("Please provide a title.");
@@ -42,12 +45,13 @@ const UploadPhotoForm = ({setShowModal}) => {
     }
 
     setErrors(errors);
-  }, [imageUrl, description]);
+  }, [description]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const payload = {
+      id: 20,
       userId: sessionUser.id,
       collectionId,
       imageUrl,
@@ -55,29 +59,42 @@ const UploadPhotoForm = ({setShowModal}) => {
     };
 
     dispatch(createLook(payload));
-    setShowModal(false)
+    setShowModal(false);
 
     history.push("/photos");
   };
 
+  // FOR AWS
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImageUrl(file);
+  };
+
+  console.log("IMAGE IN AWS", imageUrl)
+  console.log("USER ID", sessionUser.id)
+
   return (
     <div id="form-container">
       <div>
-        <form
-          id="upload-photo-modal-form"
-          onSubmit={(e) => handleSubmit(e)}
-        >
+        <form id="upload-photo-modal-form" onSubmit={(e) => handleSubmit(e)}>
           <h1 id="create-a-look-header">Upload a Photo</h1>
 
           <label className="add-a-look-labels">Image URL: </label>
-          <input
+          {/* <input
             type="text"
             placeholder="Insert image URL here..."
-            required
+            // required
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             className="input"
-          />
+          /> */}
+
+
+          {/* FOR AWS UPLOAD*/}
+          <label>
+            <input type="file" onChange={updateFile} />
+          </label>
+
           <label className="add-a-look-labels">Title: </label>
           <input
             type="text"
@@ -99,7 +116,7 @@ const UploadPhotoForm = ({setShowModal}) => {
               </option>
             ))}
           </select>
-          <button className="submit" disabled={errors.length > 0}>
+          <button className="submit">
             Submit
           </button>
         </form>

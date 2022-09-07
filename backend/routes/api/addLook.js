@@ -13,11 +13,24 @@ const router = express.Router();
 
 router.post(
   "/",
-  singleMulterUpload("image"),
+  singleMulterUpload("imageUrl"),
   asyncHandler(async function (req, res) {
-    const photo = await db.Photo.create(req.body);
+
+
     const newPhotoUrl = await singlePublicFileUpload(req.file);
-      return res.json(photo);
+    // const photo = await db.Photo.create(req.body);
+    const photo = await db.Photo.create({
+      id: req.body.id,
+      collectionId: req.body.collectionId,
+      userId: req.body.userId,
+      imageUrl: newPhotoUrl,
+      description: req.body.description
+    });
+
+    console.log("================HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO=========================", newPhotoUrl)
+
+
+    return res.json(photo);
   })
 );
 
